@@ -1,0 +1,826 @@
+[2026-04-10 13:56:28] production.ERROR: file_get_contents(D:\Manda\VSCode\Catalog\catalog-backend\.env): Failed to open stream: No such file or directory {"exception":"[object] (ErrorException(code: 0): file_get_contents(D:\\Manda\\VSCode\\Catalog\\catalog-backend\\.env): Failed to open stream: No such file or directory at D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Foundation/Console/KeyGenerateCommand.php:100)
+[stacktrace]
+#0 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(258): Illuminate/Foundation/Bootstrap/HandleExceptions->handleError(2, 'file_get_conten...', 'D://Manda//VSCode...', 100)
+#1 [internal function]: Illuminate/Foundation/Bootstrap/HandleExceptions->Illuminate/Foundation/Bootstrap/{closure}(2, 'file_get_conten...', 'D://Manda//VSCode...', 100)
+#2 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Foundation/Console/KeyGenerateCommand.php(100): file_get_contents('D://Manda//VSCode...')
+#3 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Foundation/Console/KeyGenerateCommand.php(82): Illuminate/Foundation/Console/KeyGenerateCommand->writeNewEnvironmentFileWith('base64:pFm/jG1Z...')
+#4 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Foundation/Console/KeyGenerateCommand.php(47): Illuminate/Foundation/Console/KeyGenerateCommand->setKeyInEnvironmentFile('base64:pFm/jG1Z...')
+#5 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(36): Illuminate/Foundation/Console/KeyGenerateCommand->handle()
+#6 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Container/Util.php(43): Illuminate/Container/BoundMethod::Illuminate/Container/{closure}()
+#7 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(95): Illuminate/Container/Util::unwrapIfClosure(Object(Closure))
+#8 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(35): Illuminate/Container/BoundMethod::callBoundMethod(Object(Illuminate/Foundation/Application), Array, Object(Closure))
+#9 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Container/Container.php(696): Illuminate/Container/BoundMethod::call(Object(Illuminate/Foundation/Application), Array, Array, NULL)
+#10 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Console/Command.php(213): Illuminate/Container/Container->call(Array)
+#11 D:/Manda/VSCode/Catalog/catalog-backend/vendor/symfony/console/Command/Command.php(341): Illuminate/Console/Command->execute(Object(Symfony/Component/Console/Input/ArgvInput), Object(Illuminate/Console/OutputStyle))
+#12 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Console/Command.php(182): Symfony/Component/Console/Command/Command->run(Object(Symfony/Component/Console/Input/ArgvInput), Object(Illuminate/Console/OutputStyle))
+#13 D:/Manda/VSCode/Catalog/catalog-backend/vendor/symfony/console/Application.php(1117): Illuminate/Console/Command->run(Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#14 D:/Manda/VSCode/Catalog/catalog-backend/vendor/symfony/console/Application.php(356): Symfony/Component/Console/Application->doRunCommand(Object(Illuminate/Foundation/Console/KeyGenerateCommand), Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#15 D:/Manda/VSCode/Catalog/catalog-backend/vendor/symfony/console/Application.php(195): Symfony/Component/Console/Application->doRun(Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#16 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(198): Symfony/Component/Console/Application->run(Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#17 D:/Manda/VSCode/Catalog/catalog-backend/artisan(12): Illuminate/Foundation/Console/Kernel->handle(Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#18 {main}
+"} 
+[2026-04-10 13:57:20] local.ERROR: SQLSTATE[42S01]: Base table or view already exists: 1050 Table 'roles' already exists (Connection: mysql, SQL: create table `roles` (`id_role` varchar(10) not null, `id_role_code` varchar(10) not null, `role_name` varchar(255) not null, `description` varchar(255) null, `created_at` timestamp null, `updated_at` timestamp null, primary key (`id_role`)) default character set utf8mb4 collate 'utf8mb4_unicode_ci') {"exception":"[object] (Illuminate\\Database\\QueryException(code: 42S01): SQLSTATE[42S01]: Base table or view already exists: 1050 Table 'roles' already exists (Connection: mysql, SQL: create table `roles` (`id_role` varchar(10) not null, `id_role_code` varchar(10) not null, `role_name` varchar(255) not null, `description` varchar(255) null, `created_at` timestamp null, `updated_at` timestamp null, primary key (`id_role`)) default character set utf8mb4 collate 'utf8mb4_unicode_ci') at D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Connection.php:825)
+[stacktrace]
+#0 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Connection.php(779): Illuminate/Database/Connection->runQueryCallback('create table `r...', Array, Object(Closure))
+#1 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Connection.php(560): Illuminate/Database/Connection->run('create table `r...', Array, Object(Closure))
+#2 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Schema/Blueprint.php(118): Illuminate/Database/Connection->statement('create table `r...')
+#3 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Schema/Builder.php(564): Illuminate/Database/Schema/Blueprint->build(Object(Illuminate/Database/MySqlConnection), Object(Illuminate/Database/Schema/Grammars/MySqlGrammar))
+#4 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Schema/Builder.php(418): Illuminate/Database/Schema/Builder->build(Object(Illuminate/Database/Schema/Blueprint))
+#5 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Support/Facades/Facade.php(361): Illuminate/Database/Schema/Builder->create('roles', Object(Closure))
+#6 D:/Manda/VSCode/Catalog/catalog-backend/database/migrations/2024_01_01_create_roles_table.php(10): Illuminate/Support/Facades/Facade::__callStatic('create', Array)
+#7 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(507): Illuminate/Database/Migrations/Migration@anonymous->up()
+#8 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(432): Illuminate/Database/Migrations/Migrator->runMethod(Object(Illuminate/Database/MySqlConnection), Object(Illuminate/Database/Migrations/Migration@anonymous), 'up')
+#9 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(441): Illuminate/Database/Migrations/Migrator->Illuminate/Database/Migrations/{closure}()
+#10 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(244): Illuminate/Database/Migrations/Migrator->runMigration(Object(Illuminate/Database/Migrations/Migration@anonymous), 'up')
+#11 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Console/View/Components/Task.php(40): Illuminate/Database/Migrations/Migrator->Illuminate/Database/Migrations/{closure}()
+#12 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(798): Illuminate/Console/View/Components/Task->render('2024_01_01_crea...', Object(Closure))
+#13 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(244): Illuminate/Database/Migrations/Migrator->write('Illuminate//Cons...', '2024_01_01_crea...', Object(Closure))
+#14 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(211): Illuminate/Database/Migrations/Migrator->runUp('D://Manda//VSCode...', 2, false)
+#15 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(138): Illuminate/Database/Migrations/Migrator->runPending(Array, Array)
+#16 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Console/Migrations/MigrateCommand.php(117): Illuminate/Database/Migrations/Migrator->run(Array, Array)
+#17 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(658): Illuminate/Database/Console/Migrations/MigrateCommand->Illuminate/Database/Console/Migrations/{closure}()
+#18 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Console/Migrations/MigrateCommand.php(110): Illuminate/Database/Migrations/Migrator->usingConnection(NULL, Object(Closure))
+#19 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Console/Migrations/MigrateCommand.php(89): Illuminate/Database/Console/Migrations/MigrateCommand->runMigrations()
+#20 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(36): Illuminate/Database/Console/Migrations/MigrateCommand->handle()
+#21 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Container/Util.php(43): Illuminate/Container/BoundMethod::Illuminate/Container/{closure}()
+#22 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(95): Illuminate/Container/Util::unwrapIfClosure(Object(Closure))
+#23 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(35): Illuminate/Container/BoundMethod::callBoundMethod(Object(Illuminate/Foundation/Application), Array, Object(Closure))
+#24 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Container/Container.php(696): Illuminate/Container/BoundMethod::call(Object(Illuminate/Foundation/Application), Array, Array, NULL)
+#25 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Console/Command.php(213): Illuminate/Container/Container->call(Array)
+#26 D:/Manda/VSCode/Catalog/catalog-backend/vendor/symfony/console/Command/Command.php(341): Illuminate/Console/Command->execute(Object(Symfony/Component/Console/Input/ArgvInput), Object(Illuminate/Console/OutputStyle))
+#27 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Console/Command.php(182): Symfony/Component/Console/Command/Command->run(Object(Symfony/Component/Console/Input/ArgvInput), Object(Illuminate/Console/OutputStyle))
+#28 D:/Manda/VSCode/Catalog/catalog-backend/vendor/symfony/console/Application.php(1117): Illuminate/Console/Command->run(Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#29 D:/Manda/VSCode/Catalog/catalog-backend/vendor/symfony/console/Application.php(356): Symfony/Component/Console/Application->doRunCommand(Object(Illuminate/Database/Console/Migrations/MigrateCommand), Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#30 D:/Manda/VSCode/Catalog/catalog-backend/vendor/symfony/console/Application.php(195): Symfony/Component/Console/Application->doRun(Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#31 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(198): Symfony/Component/Console/Application->run(Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#32 D:/Manda/VSCode/Catalog/catalog-backend/artisan(12): Illuminate/Foundation/Console/Kernel->handle(Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#33 {main}
+
+[previous exception] [object] (PDOException(code: 42S01): SQLSTATE[42S01]: Base table or view already exists: 1050 Table 'roles' already exists at D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Connection.php:571)
+[stacktrace]
+#0 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Connection.php(571): PDOStatement->execute()
+#1 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Connection.php(812): Illuminate/Database/Connection->Illuminate/Database/{closure}('create table `r...', Array)
+#2 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Connection.php(779): Illuminate/Database/Connection->runQueryCallback('create table `r...', Array, Object(Closure))
+#3 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Connection.php(560): Illuminate/Database/Connection->run('create table `r...', Array, Object(Closure))
+#4 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Schema/Blueprint.php(118): Illuminate/Database/Connection->statement('create table `r...')
+#5 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Schema/Builder.php(564): Illuminate/Database/Schema/Blueprint->build(Object(Illuminate/Database/MySqlConnection), Object(Illuminate/Database/Schema/Grammars/MySqlGrammar))
+#6 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Schema/Builder.php(418): Illuminate/Database/Schema/Builder->build(Object(Illuminate/Database/Schema/Blueprint))
+#7 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Support/Facades/Facade.php(361): Illuminate/Database/Schema/Builder->create('roles', Object(Closure))
+#8 D:/Manda/VSCode/Catalog/catalog-backend/database/migrations/2024_01_01_create_roles_table.php(10): Illuminate/Support/Facades/Facade::__callStatic('create', Array)
+#9 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(507): Illuminate/Database/Migrations/Migration@anonymous->up()
+#10 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(432): Illuminate/Database/Migrations/Migrator->runMethod(Object(Illuminate/Database/MySqlConnection), Object(Illuminate/Database/Migrations/Migration@anonymous), 'up')
+#11 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(441): Illuminate/Database/Migrations/Migrator->Illuminate/Database/Migrations/{closure}()
+#12 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(244): Illuminate/Database/Migrations/Migrator->runMigration(Object(Illuminate/Database/Migrations/Migration@anonymous), 'up')
+#13 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Console/View/Components/Task.php(40): Illuminate/Database/Migrations/Migrator->Illuminate/Database/Migrations/{closure}()
+#14 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(798): Illuminate/Console/View/Components/Task->render('2024_01_01_crea...', Object(Closure))
+#15 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(244): Illuminate/Database/Migrations/Migrator->write('Illuminate//Cons...', '2024_01_01_crea...', Object(Closure))
+#16 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(211): Illuminate/Database/Migrations/Migrator->runUp('D://Manda//VSCode...', 2, false)
+#17 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(138): Illuminate/Database/Migrations/Migrator->runPending(Array, Array)
+#18 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Console/Migrations/MigrateCommand.php(117): Illuminate/Database/Migrations/Migrator->run(Array, Array)
+#19 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(658): Illuminate/Database/Console/Migrations/MigrateCommand->Illuminate/Database/Console/Migrations/{closure}()
+#20 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Console/Migrations/MigrateCommand.php(110): Illuminate/Database/Migrations/Migrator->usingConnection(NULL, Object(Closure))
+#21 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Console/Migrations/MigrateCommand.php(89): Illuminate/Database/Console/Migrations/MigrateCommand->runMigrations()
+#22 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(36): Illuminate/Database/Console/Migrations/MigrateCommand->handle()
+#23 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Container/Util.php(43): Illuminate/Container/BoundMethod::Illuminate/Container/{closure}()
+#24 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(95): Illuminate/Container/Util::unwrapIfClosure(Object(Closure))
+#25 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(35): Illuminate/Container/BoundMethod::callBoundMethod(Object(Illuminate/Foundation/Application), Array, Object(Closure))
+#26 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Container/Container.php(696): Illuminate/Container/BoundMethod::call(Object(Illuminate/Foundation/Application), Array, Array, NULL)
+#27 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Console/Command.php(213): Illuminate/Container/Container->call(Array)
+#28 D:/Manda/VSCode/Catalog/catalog-backend/vendor/symfony/console/Command/Command.php(341): Illuminate/Console/Command->execute(Object(Symfony/Component/Console/Input/ArgvInput), Object(Illuminate/Console/OutputStyle))
+#29 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Console/Command.php(182): Symfony/Component/Console/Command/Command->run(Object(Symfony/Component/Console/Input/ArgvInput), Object(Illuminate/Console/OutputStyle))
+#30 D:/Manda/VSCode/Catalog/catalog-backend/vendor/symfony/console/Application.php(1117): Illuminate/Console/Command->run(Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#31 D:/Manda/VSCode/Catalog/catalog-backend/vendor/symfony/console/Application.php(356): Symfony/Component/Console/Application->doRunCommand(Object(Illuminate/Database/Console/Migrations/MigrateCommand), Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#32 D:/Manda/VSCode/Catalog/catalog-backend/vendor/symfony/console/Application.php(195): Symfony/Component/Console/Application->doRun(Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#33 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(198): Symfony/Component/Console/Application->run(Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#34 D:/Manda/VSCode/Catalog/catalog-backend/artisan(12): Illuminate/Foundation/Console/Kernel->handle(Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#35 {main}
+"} 
+[2026-04-10 14:07:13] local.ERROR: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'catalog_db.cache' doesn't exist (Connection: mysql, SQL: delete from `cache`) {"exception":"[object] (Illuminate\\Database\\QueryException(code: 42S02): SQLSTATE[42S02]: Base table or view not found: 1146 Table 'catalog_db.cache' doesn't exist (Connection: mysql, SQL: delete from `cache`) at D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Connection.php:825)
+[stacktrace]
+#0 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Connection.php(779): Illuminate/Database/Connection->runQueryCallback('delete from `ca...', Array, Object(Closure))
+#1 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Connection.php(584): Illuminate/Database/Connection->run('delete from `ca...', Array, Object(Closure))
+#2 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Connection.php(548): Illuminate/Database/Connection->affectingStatement('delete from `ca...', Array)
+#3 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php(4024): Illuminate/Database/Connection->delete('delete from `ca...', Array)
+#4 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Cache/DatabaseStore.php(422): Illuminate/Database/Query/Builder->delete()
+#5 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Cache/Repository.php(792): Illuminate/Cache/DatabaseStore->flush()
+#6 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Cache/Console/ClearCommand.php(69): Illuminate/Cache/Repository->__call('flush', Array)
+#7 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(36): Illuminate/Cache/Console/ClearCommand->handle()
+#8 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Container/Util.php(43): Illuminate/Container/BoundMethod::Illuminate/Container/{closure}()
+#9 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(95): Illuminate/Container/Util::unwrapIfClosure(Object(Closure))
+#10 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(35): Illuminate/Container/BoundMethod::callBoundMethod(Object(Illuminate/Foundation/Application), Array, Object(Closure))
+#11 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Container/Container.php(696): Illuminate/Container/BoundMethod::call(Object(Illuminate/Foundation/Application), Array, Array, NULL)
+#12 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Console/Command.php(213): Illuminate/Container/Container->call(Array)
+#13 D:/Manda/VSCode/Catalog/catalog-backend/vendor/symfony/console/Command/Command.php(341): Illuminate/Console/Command->execute(Object(Symfony/Component/Console/Input/ArgvInput), Object(Illuminate/Console/OutputStyle))
+#14 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Console/Command.php(182): Symfony/Component/Console/Command/Command->run(Object(Symfony/Component/Console/Input/ArgvInput), Object(Illuminate/Console/OutputStyle))
+#15 D:/Manda/VSCode/Catalog/catalog-backend/vendor/symfony/console/Application.php(1117): Illuminate/Console/Command->run(Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#16 D:/Manda/VSCode/Catalog/catalog-backend/vendor/symfony/console/Application.php(356): Symfony/Component/Console/Application->doRunCommand(Object(Illuminate/Cache/Console/ClearCommand), Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#17 D:/Manda/VSCode/Catalog/catalog-backend/vendor/symfony/console/Application.php(195): Symfony/Component/Console/Application->doRun(Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#18 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(198): Symfony/Component/Console/Application->run(Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#19 D:/Manda/VSCode/Catalog/catalog-backend/artisan(12): Illuminate/Foundation/Console/Kernel->handle(Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#20 {main}
+
+[previous exception] [object] (PDOException(code: 42S02): SQLSTATE[42S02]: Base table or view not found: 1146 Table 'catalog_db.cache' doesn't exist at D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Connection.php:592)
+[stacktrace]
+#0 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Connection.php(592): PDO->prepare('delete from `ca...')
+#1 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Connection.php(812): Illuminate/Database/Connection->Illuminate/Database/{closure}('delete from `ca...', Array)
+#2 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Connection.php(779): Illuminate/Database/Connection->runQueryCallback('delete from `ca...', Array, Object(Closure))
+#3 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Connection.php(584): Illuminate/Database/Connection->run('delete from `ca...', Array, Object(Closure))
+#4 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Connection.php(548): Illuminate/Database/Connection->affectingStatement('delete from `ca...', Array)
+#5 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php(4024): Illuminate/Database/Connection->delete('delete from `ca...', Array)
+#6 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Cache/DatabaseStore.php(422): Illuminate/Database/Query/Builder->delete()
+#7 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Cache/Repository.php(792): Illuminate/Cache/DatabaseStore->flush()
+#8 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Cache/Console/ClearCommand.php(69): Illuminate/Cache/Repository->__call('flush', Array)
+#9 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(36): Illuminate/Cache/Console/ClearCommand->handle()
+#10 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Container/Util.php(43): Illuminate/Container/BoundMethod::Illuminate/Container/{closure}()
+#11 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(95): Illuminate/Container/Util::unwrapIfClosure(Object(Closure))
+#12 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(35): Illuminate/Container/BoundMethod::callBoundMethod(Object(Illuminate/Foundation/Application), Array, Object(Closure))
+#13 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Container/Container.php(696): Illuminate/Container/BoundMethod::call(Object(Illuminate/Foundation/Application), Array, Array, NULL)
+#14 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Console/Command.php(213): Illuminate/Container/Container->call(Array)
+#15 D:/Manda/VSCode/Catalog/catalog-backend/vendor/symfony/console/Command/Command.php(341): Illuminate/Console/Command->execute(Object(Symfony/Component/Console/Input/ArgvInput), Object(Illuminate/Console/OutputStyle))
+#16 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Console/Command.php(182): Symfony/Component/Console/Command/Command->run(Object(Symfony/Component/Console/Input/ArgvInput), Object(Illuminate/Console/OutputStyle))
+#17 D:/Manda/VSCode/Catalog/catalog-backend/vendor/symfony/console/Application.php(1117): Illuminate/Console/Command->run(Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#18 D:/Manda/VSCode/Catalog/catalog-backend/vendor/symfony/console/Application.php(356): Symfony/Component/Console/Application->doRunCommand(Object(Illuminate/Cache/Console/ClearCommand), Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#19 D:/Manda/VSCode/Catalog/catalog-backend/vendor/symfony/console/Application.php(195): Symfony/Component/Console/Application->doRun(Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#20 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(198): Symfony/Component/Console/Application->run(Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#21 D:/Manda/VSCode/Catalog/catalog-backend/artisan(12): Illuminate/Foundation/Console/Kernel->handle(Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#22 {main}
+"} 
+[2026-04-10 14:09:04] local.ERROR: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'catalog_db.cache' doesn't exist (Connection: mysql, SQL: delete from `cache`) {"exception":"[object] (Illuminate\\Database\\QueryException(code: 42S02): SQLSTATE[42S02]: Base table or view not found: 1146 Table 'catalog_db.cache' doesn't exist (Connection: mysql, SQL: delete from `cache`) at D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Connection.php:825)
+[stacktrace]
+#0 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Connection.php(779): Illuminate/Database/Connection->runQueryCallback('delete from `ca...', Array, Object(Closure))
+#1 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Connection.php(584): Illuminate/Database/Connection->run('delete from `ca...', Array, Object(Closure))
+#2 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Connection.php(548): Illuminate/Database/Connection->affectingStatement('delete from `ca...', Array)
+#3 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php(4024): Illuminate/Database/Connection->delete('delete from `ca...', Array)
+#4 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Cache/DatabaseStore.php(422): Illuminate/Database/Query/Builder->delete()
+#5 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Cache/Repository.php(792): Illuminate/Cache/DatabaseStore->flush()
+#6 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Cache/Console/ClearCommand.php(69): Illuminate/Cache/Repository->__call('flush', Array)
+#7 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(36): Illuminate/Cache/Console/ClearCommand->handle()
+#8 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Container/Util.php(43): Illuminate/Container/BoundMethod::Illuminate/Container/{closure}()
+#9 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(95): Illuminate/Container/Util::unwrapIfClosure(Object(Closure))
+#10 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(35): Illuminate/Container/BoundMethod::callBoundMethod(Object(Illuminate/Foundation/Application), Array, Object(Closure))
+#11 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Container/Container.php(696): Illuminate/Container/BoundMethod::call(Object(Illuminate/Foundation/Application), Array, Array, NULL)
+#12 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Console/Command.php(213): Illuminate/Container/Container->call(Array)
+#13 D:/Manda/VSCode/Catalog/catalog-backend/vendor/symfony/console/Command/Command.php(341): Illuminate/Console/Command->execute(Object(Symfony/Component/Console/Input/ArgvInput), Object(Illuminate/Console/OutputStyle))
+#14 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Console/Command.php(182): Symfony/Component/Console/Command/Command->run(Object(Symfony/Component/Console/Input/ArgvInput), Object(Illuminate/Console/OutputStyle))
+#15 D:/Manda/VSCode/Catalog/catalog-backend/vendor/symfony/console/Application.php(1117): Illuminate/Console/Command->run(Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#16 D:/Manda/VSCode/Catalog/catalog-backend/vendor/symfony/console/Application.php(356): Symfony/Component/Console/Application->doRunCommand(Object(Illuminate/Cache/Console/ClearCommand), Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#17 D:/Manda/VSCode/Catalog/catalog-backend/vendor/symfony/console/Application.php(195): Symfony/Component/Console/Application->doRun(Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#18 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(198): Symfony/Component/Console/Application->run(Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#19 D:/Manda/VSCode/Catalog/catalog-backend/artisan(12): Illuminate/Foundation/Console/Kernel->handle(Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#20 {main}
+
+[previous exception] [object] (PDOException(code: 42S02): SQLSTATE[42S02]: Base table or view not found: 1146 Table 'catalog_db.cache' doesn't exist at D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Connection.php:592)
+[stacktrace]
+#0 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Connection.php(592): PDO->prepare('delete from `ca...')
+#1 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Connection.php(812): Illuminate/Database/Connection->Illuminate/Database/{closure}('delete from `ca...', Array)
+#2 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Connection.php(779): Illuminate/Database/Connection->runQueryCallback('delete from `ca...', Array, Object(Closure))
+#3 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Connection.php(584): Illuminate/Database/Connection->run('delete from `ca...', Array, Object(Closure))
+#4 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Connection.php(548): Illuminate/Database/Connection->affectingStatement('delete from `ca...', Array)
+#5 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php(4024): Illuminate/Database/Connection->delete('delete from `ca...', Array)
+#6 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Cache/DatabaseStore.php(422): Illuminate/Database/Query/Builder->delete()
+#7 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Cache/Repository.php(792): Illuminate/Cache/DatabaseStore->flush()
+#8 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Cache/Console/ClearCommand.php(69): Illuminate/Cache/Repository->__call('flush', Array)
+#9 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(36): Illuminate/Cache/Console/ClearCommand->handle()
+#10 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Container/Util.php(43): Illuminate/Container/BoundMethod::Illuminate/Container/{closure}()
+#11 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(95): Illuminate/Container/Util::unwrapIfClosure(Object(Closure))
+#12 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(35): Illuminate/Container/BoundMethod::callBoundMethod(Object(Illuminate/Foundation/Application), Array, Object(Closure))
+#13 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Container/Container.php(696): Illuminate/Container/BoundMethod::call(Object(Illuminate/Foundation/Application), Array, Array, NULL)
+#14 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Console/Command.php(213): Illuminate/Container/Container->call(Array)
+#15 D:/Manda/VSCode/Catalog/catalog-backend/vendor/symfony/console/Command/Command.php(341): Illuminate/Console/Command->execute(Object(Symfony/Component/Console/Input/ArgvInput), Object(Illuminate/Console/OutputStyle))
+#16 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Console/Command.php(182): Symfony/Component/Console/Command/Command->run(Object(Symfony/Component/Console/Input/ArgvInput), Object(Illuminate/Console/OutputStyle))
+#17 D:/Manda/VSCode/Catalog/catalog-backend/vendor/symfony/console/Application.php(1117): Illuminate/Console/Command->run(Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#18 D:/Manda/VSCode/Catalog/catalog-backend/vendor/symfony/console/Application.php(356): Symfony/Component/Console/Application->doRunCommand(Object(Illuminate/Cache/Console/ClearCommand), Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#19 D:/Manda/VSCode/Catalog/catalog-backend/vendor/symfony/console/Application.php(195): Symfony/Component/Console/Application->doRun(Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#20 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(198): Symfony/Component/Console/Application->run(Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#21 D:/Manda/VSCode/Catalog/catalog-backend/artisan(12): Illuminate/Foundation/Console/Kernel->handle(Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#22 {main}
+"} 
+[2026-04-10 14:12:13] local.ERROR: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'catalog_db.cache' doesn't exist (Connection: mysql, SQL: delete from `cache`) {"exception":"[object] (Illuminate\\Database\\QueryException(code: 42S02): SQLSTATE[42S02]: Base table or view not found: 1146 Table 'catalog_db.cache' doesn't exist (Connection: mysql, SQL: delete from `cache`) at D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Connection.php:825)
+[stacktrace]
+#0 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Connection.php(779): Illuminate/Database/Connection->runQueryCallback('delete from `ca...', Array, Object(Closure))
+#1 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Connection.php(584): Illuminate/Database/Connection->run('delete from `ca...', Array, Object(Closure))
+#2 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Connection.php(548): Illuminate/Database/Connection->affectingStatement('delete from `ca...', Array)
+#3 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php(4024): Illuminate/Database/Connection->delete('delete from `ca...', Array)
+#4 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Cache/DatabaseStore.php(422): Illuminate/Database/Query/Builder->delete()
+#5 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Cache/Repository.php(792): Illuminate/Cache/DatabaseStore->flush()
+#6 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Cache/Console/ClearCommand.php(69): Illuminate/Cache/Repository->__call('flush', Array)
+#7 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(36): Illuminate/Cache/Console/ClearCommand->handle()
+#8 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Container/Util.php(43): Illuminate/Container/BoundMethod::Illuminate/Container/{closure}()
+#9 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(95): Illuminate/Container/Util::unwrapIfClosure(Object(Closure))
+#10 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(35): Illuminate/Container/BoundMethod::callBoundMethod(Object(Illuminate/Foundation/Application), Array, Object(Closure))
+#11 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Container/Container.php(696): Illuminate/Container/BoundMethod::call(Object(Illuminate/Foundation/Application), Array, Array, NULL)
+#12 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Console/Command.php(213): Illuminate/Container/Container->call(Array)
+#13 D:/Manda/VSCode/Catalog/catalog-backend/vendor/symfony/console/Command/Command.php(341): Illuminate/Console/Command->execute(Object(Symfony/Component/Console/Input/ArgvInput), Object(Illuminate/Console/OutputStyle))
+#14 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Console/Command.php(182): Symfony/Component/Console/Command/Command->run(Object(Symfony/Component/Console/Input/ArgvInput), Object(Illuminate/Console/OutputStyle))
+#15 D:/Manda/VSCode/Catalog/catalog-backend/vendor/symfony/console/Application.php(1117): Illuminate/Console/Command->run(Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#16 D:/Manda/VSCode/Catalog/catalog-backend/vendor/symfony/console/Application.php(356): Symfony/Component/Console/Application->doRunCommand(Object(Illuminate/Cache/Console/ClearCommand), Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#17 D:/Manda/VSCode/Catalog/catalog-backend/vendor/symfony/console/Application.php(195): Symfony/Component/Console/Application->doRun(Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#18 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(198): Symfony/Component/Console/Application->run(Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#19 D:/Manda/VSCode/Catalog/catalog-backend/artisan(12): Illuminate/Foundation/Console/Kernel->handle(Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#20 {main}
+
+[previous exception] [object] (PDOException(code: 42S02): SQLSTATE[42S02]: Base table or view not found: 1146 Table 'catalog_db.cache' doesn't exist at D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Connection.php:592)
+[stacktrace]
+#0 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Connection.php(592): PDO->prepare('delete from `ca...')
+#1 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Connection.php(812): Illuminate/Database/Connection->Illuminate/Database/{closure}('delete from `ca...', Array)
+#2 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Connection.php(779): Illuminate/Database/Connection->runQueryCallback('delete from `ca...', Array, Object(Closure))
+#3 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Connection.php(584): Illuminate/Database/Connection->run('delete from `ca...', Array, Object(Closure))
+#4 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Connection.php(548): Illuminate/Database/Connection->affectingStatement('delete from `ca...', Array)
+#5 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php(4024): Illuminate/Database/Connection->delete('delete from `ca...', Array)
+#6 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Cache/DatabaseStore.php(422): Illuminate/Database/Query/Builder->delete()
+#7 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Cache/Repository.php(792): Illuminate/Cache/DatabaseStore->flush()
+#8 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Cache/Console/ClearCommand.php(69): Illuminate/Cache/Repository->__call('flush', Array)
+#9 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(36): Illuminate/Cache/Console/ClearCommand->handle()
+#10 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Container/Util.php(43): Illuminate/Container/BoundMethod::Illuminate/Container/{closure}()
+#11 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(95): Illuminate/Container/Util::unwrapIfClosure(Object(Closure))
+#12 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(35): Illuminate/Container/BoundMethod::callBoundMethod(Object(Illuminate/Foundation/Application), Array, Object(Closure))
+#13 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Container/Container.php(696): Illuminate/Container/BoundMethod::call(Object(Illuminate/Foundation/Application), Array, Array, NULL)
+#14 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Console/Command.php(213): Illuminate/Container/Container->call(Array)
+#15 D:/Manda/VSCode/Catalog/catalog-backend/vendor/symfony/console/Command/Command.php(341): Illuminate/Console/Command->execute(Object(Symfony/Component/Console/Input/ArgvInput), Object(Illuminate/Console/OutputStyle))
+#16 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Console/Command.php(182): Symfony/Component/Console/Command/Command->run(Object(Symfony/Component/Console/Input/ArgvInput), Object(Illuminate/Console/OutputStyle))
+#17 D:/Manda/VSCode/Catalog/catalog-backend/vendor/symfony/console/Application.php(1117): Illuminate/Console/Command->run(Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#18 D:/Manda/VSCode/Catalog/catalog-backend/vendor/symfony/console/Application.php(356): Symfony/Component/Console/Application->doRunCommand(Object(Illuminate/Cache/Console/ClearCommand), Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#19 D:/Manda/VSCode/Catalog/catalog-backend/vendor/symfony/console/Application.php(195): Symfony/Component/Console/Application->doRun(Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#20 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(198): Symfony/Component/Console/Application->run(Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#21 D:/Manda/VSCode/Catalog/catalog-backend/artisan(12): Illuminate/Foundation/Console/Kernel->handle(Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#22 {main}
+"} 
+[2026-04-10 14:17:47] local.ERROR: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'catalog_db.cache' doesn't exist (Connection: mysql, SQL: delete from `cache`) {"exception":"[object] (Illuminate\\Database\\QueryException(code: 42S02): SQLSTATE[42S02]: Base table or view not found: 1146 Table 'catalog_db.cache' doesn't exist (Connection: mysql, SQL: delete from `cache`) at D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Connection.php:825)
+[stacktrace]
+#0 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Connection.php(779): Illuminate/Database/Connection->runQueryCallback('delete from `ca...', Array, Object(Closure))
+#1 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Connection.php(584): Illuminate/Database/Connection->run('delete from `ca...', Array, Object(Closure))
+#2 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Connection.php(548): Illuminate/Database/Connection->affectingStatement('delete from `ca...', Array)
+#3 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php(4024): Illuminate/Database/Connection->delete('delete from `ca...', Array)
+#4 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Cache/DatabaseStore.php(422): Illuminate/Database/Query/Builder->delete()
+#5 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Cache/Repository.php(792): Illuminate/Cache/DatabaseStore->flush()
+#6 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Cache/Console/ClearCommand.php(69): Illuminate/Cache/Repository->__call('flush', Array)
+#7 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(36): Illuminate/Cache/Console/ClearCommand->handle()
+#8 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Container/Util.php(43): Illuminate/Container/BoundMethod::Illuminate/Container/{closure}()
+#9 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(95): Illuminate/Container/Util::unwrapIfClosure(Object(Closure))
+#10 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(35): Illuminate/Container/BoundMethod::callBoundMethod(Object(Illuminate/Foundation/Application), Array, Object(Closure))
+#11 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Container/Container.php(696): Illuminate/Container/BoundMethod::call(Object(Illuminate/Foundation/Application), Array, Array, NULL)
+#12 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Console/Command.php(213): Illuminate/Container/Container->call(Array)
+#13 D:/Manda/VSCode/Catalog/catalog-backend/vendor/symfony/console/Command/Command.php(341): Illuminate/Console/Command->execute(Object(Symfony/Component/Console/Input/ArgvInput), Object(Illuminate/Console/OutputStyle))
+#14 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Console/Command.php(182): Symfony/Component/Console/Command/Command->run(Object(Symfony/Component/Console/Input/ArgvInput), Object(Illuminate/Console/OutputStyle))
+#15 D:/Manda/VSCode/Catalog/catalog-backend/vendor/symfony/console/Application.php(1117): Illuminate/Console/Command->run(Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#16 D:/Manda/VSCode/Catalog/catalog-backend/vendor/symfony/console/Application.php(356): Symfony/Component/Console/Application->doRunCommand(Object(Illuminate/Cache/Console/ClearCommand), Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#17 D:/Manda/VSCode/Catalog/catalog-backend/vendor/symfony/console/Application.php(195): Symfony/Component/Console/Application->doRun(Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#18 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(198): Symfony/Component/Console/Application->run(Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#19 D:/Manda/VSCode/Catalog/catalog-backend/artisan(12): Illuminate/Foundation/Console/Kernel->handle(Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#20 {main}
+
+[previous exception] [object] (PDOException(code: 42S02): SQLSTATE[42S02]: Base table or view not found: 1146 Table 'catalog_db.cache' doesn't exist at D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Connection.php:592)
+[stacktrace]
+#0 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Connection.php(592): PDO->prepare('delete from `ca...')
+#1 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Connection.php(812): Illuminate/Database/Connection->Illuminate/Database/{closure}('delete from `ca...', Array)
+#2 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Connection.php(779): Illuminate/Database/Connection->runQueryCallback('delete from `ca...', Array, Object(Closure))
+#3 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Connection.php(584): Illuminate/Database/Connection->run('delete from `ca...', Array, Object(Closure))
+#4 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Connection.php(548): Illuminate/Database/Connection->affectingStatement('delete from `ca...', Array)
+#5 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php(4024): Illuminate/Database/Connection->delete('delete from `ca...', Array)
+#6 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Cache/DatabaseStore.php(422): Illuminate/Database/Query/Builder->delete()
+#7 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Cache/Repository.php(792): Illuminate/Cache/DatabaseStore->flush()
+#8 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Cache/Console/ClearCommand.php(69): Illuminate/Cache/Repository->__call('flush', Array)
+#9 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(36): Illuminate/Cache/Console/ClearCommand->handle()
+#10 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Container/Util.php(43): Illuminate/Container/BoundMethod::Illuminate/Container/{closure}()
+#11 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(95): Illuminate/Container/Util::unwrapIfClosure(Object(Closure))
+#12 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(35): Illuminate/Container/BoundMethod::callBoundMethod(Object(Illuminate/Foundation/Application), Array, Object(Closure))
+#13 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Container/Container.php(696): Illuminate/Container/BoundMethod::call(Object(Illuminate/Foundation/Application), Array, Array, NULL)
+#14 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Console/Command.php(213): Illuminate/Container/Container->call(Array)
+#15 D:/Manda/VSCode/Catalog/catalog-backend/vendor/symfony/console/Command/Command.php(341): Illuminate/Console/Command->execute(Object(Symfony/Component/Console/Input/ArgvInput), Object(Illuminate/Console/OutputStyle))
+#16 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Console/Command.php(182): Symfony/Component/Console/Command/Command->run(Object(Symfony/Component/Console/Input/ArgvInput), Object(Illuminate/Console/OutputStyle))
+#17 D:/Manda/VSCode/Catalog/catalog-backend/vendor/symfony/console/Application.php(1117): Illuminate/Console/Command->run(Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#18 D:/Manda/VSCode/Catalog/catalog-backend/vendor/symfony/console/Application.php(356): Symfony/Component/Console/Application->doRunCommand(Object(Illuminate/Cache/Console/ClearCommand), Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#19 D:/Manda/VSCode/Catalog/catalog-backend/vendor/symfony/console/Application.php(195): Symfony/Component/Console/Application->doRun(Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#20 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(198): Symfony/Component/Console/Application->run(Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#21 D:/Manda/VSCode/Catalog/catalog-backend/artisan(12): Illuminate/Foundation/Console/Kernel->handle(Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#22 {main}
+"} 
+[2026-04-10 14:43:45] local.ERROR: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'catalog_db.cache' doesn't exist (Connection: mysql, SQL: delete from `cache`) {"exception":"[object] (Illuminate\\Database\\QueryException(code: 42S02): SQLSTATE[42S02]: Base table or view not found: 1146 Table 'catalog_db.cache' doesn't exist (Connection: mysql, SQL: delete from `cache`) at D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Connection.php:825)
+[stacktrace]
+#0 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Connection.php(779): Illuminate/Database/Connection->runQueryCallback('delete from `ca...', Array, Object(Closure))
+#1 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Connection.php(584): Illuminate/Database/Connection->run('delete from `ca...', Array, Object(Closure))
+#2 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Connection.php(548): Illuminate/Database/Connection->affectingStatement('delete from `ca...', Array)
+#3 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php(4024): Illuminate/Database/Connection->delete('delete from `ca...', Array)
+#4 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Cache/DatabaseStore.php(422): Illuminate/Database/Query/Builder->delete()
+#5 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Cache/Repository.php(792): Illuminate/Cache/DatabaseStore->flush()
+#6 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Cache/Console/ClearCommand.php(69): Illuminate/Cache/Repository->__call('flush', Array)
+#7 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(36): Illuminate/Cache/Console/ClearCommand->handle()
+#8 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Container/Util.php(43): Illuminate/Container/BoundMethod::Illuminate/Container/{closure}()
+#9 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(95): Illuminate/Container/Util::unwrapIfClosure(Object(Closure))
+#10 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(35): Illuminate/Container/BoundMethod::callBoundMethod(Object(Illuminate/Foundation/Application), Array, Object(Closure))
+#11 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Container/Container.php(696): Illuminate/Container/BoundMethod::call(Object(Illuminate/Foundation/Application), Array, Array, NULL)
+#12 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Console/Command.php(213): Illuminate/Container/Container->call(Array)
+#13 D:/Manda/VSCode/Catalog/catalog-backend/vendor/symfony/console/Command/Command.php(341): Illuminate/Console/Command->execute(Object(Symfony/Component/Console/Input/ArgvInput), Object(Illuminate/Console/OutputStyle))
+#14 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Console/Command.php(182): Symfony/Component/Console/Command/Command->run(Object(Symfony/Component/Console/Input/ArgvInput), Object(Illuminate/Console/OutputStyle))
+#15 D:/Manda/VSCode/Catalog/catalog-backend/vendor/symfony/console/Application.php(1117): Illuminate/Console/Command->run(Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#16 D:/Manda/VSCode/Catalog/catalog-backend/vendor/symfony/console/Application.php(356): Symfony/Component/Console/Application->doRunCommand(Object(Illuminate/Cache/Console/ClearCommand), Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#17 D:/Manda/VSCode/Catalog/catalog-backend/vendor/symfony/console/Application.php(195): Symfony/Component/Console/Application->doRun(Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#18 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(198): Symfony/Component/Console/Application->run(Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#19 D:/Manda/VSCode/Catalog/catalog-backend/artisan(12): Illuminate/Foundation/Console/Kernel->handle(Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#20 {main}
+
+[previous exception] [object] (PDOException(code: 42S02): SQLSTATE[42S02]: Base table or view not found: 1146 Table 'catalog_db.cache' doesn't exist at D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Connection.php:592)
+[stacktrace]
+#0 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Connection.php(592): PDO->prepare('delete from `ca...')
+#1 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Connection.php(812): Illuminate/Database/Connection->Illuminate/Database/{closure}('delete from `ca...', Array)
+#2 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Connection.php(779): Illuminate/Database/Connection->runQueryCallback('delete from `ca...', Array, Object(Closure))
+#3 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Connection.php(584): Illuminate/Database/Connection->run('delete from `ca...', Array, Object(Closure))
+#4 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Connection.php(548): Illuminate/Database/Connection->affectingStatement('delete from `ca...', Array)
+#5 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php(4024): Illuminate/Database/Connection->delete('delete from `ca...', Array)
+#6 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Cache/DatabaseStore.php(422): Illuminate/Database/Query/Builder->delete()
+#7 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Cache/Repository.php(792): Illuminate/Cache/DatabaseStore->flush()
+#8 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Cache/Console/ClearCommand.php(69): Illuminate/Cache/Repository->__call('flush', Array)
+#9 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(36): Illuminate/Cache/Console/ClearCommand->handle()
+#10 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Container/Util.php(43): Illuminate/Container/BoundMethod::Illuminate/Container/{closure}()
+#11 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(95): Illuminate/Container/Util::unwrapIfClosure(Object(Closure))
+#12 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(35): Illuminate/Container/BoundMethod::callBoundMethod(Object(Illuminate/Foundation/Application), Array, Object(Closure))
+#13 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Container/Container.php(696): Illuminate/Container/BoundMethod::call(Object(Illuminate/Foundation/Application), Array, Array, NULL)
+#14 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Console/Command.php(213): Illuminate/Container/Container->call(Array)
+#15 D:/Manda/VSCode/Catalog/catalog-backend/vendor/symfony/console/Command/Command.php(341): Illuminate/Console/Command->execute(Object(Symfony/Component/Console/Input/ArgvInput), Object(Illuminate/Console/OutputStyle))
+#16 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Console/Command.php(182): Symfony/Component/Console/Command/Command->run(Object(Symfony/Component/Console/Input/ArgvInput), Object(Illuminate/Console/OutputStyle))
+#17 D:/Manda/VSCode/Catalog/catalog-backend/vendor/symfony/console/Application.php(1117): Illuminate/Console/Command->run(Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#18 D:/Manda/VSCode/Catalog/catalog-backend/vendor/symfony/console/Application.php(356): Symfony/Component/Console/Application->doRunCommand(Object(Illuminate/Cache/Console/ClearCommand), Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#19 D:/Manda/VSCode/Catalog/catalog-backend/vendor/symfony/console/Application.php(195): Symfony/Component/Console/Application->doRun(Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#20 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(198): Symfony/Component/Console/Application->run(Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#21 D:/Manda/VSCode/Catalog/catalog-backend/artisan(12): Illuminate/Foundation/Console/Kernel->handle(Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#22 {main}
+"} 
+[2026-04-10 14:52:00] local.ERROR: SQLSTATE[42S01]: Base table or view already exists: 1050 Table 'personal_access_tokens' already exists (Connection: mysql, SQL: create table `personal_access_tokens` (`id` bigint unsigned not null auto_increment primary key, `tokenable_type` varchar(255) not null, `tokenable_id` bigint unsigned not null, `name` text not null, `token` varchar(64) not null, `abilities` text null, `last_used_at` timestamp null, `expires_at` timestamp null, `created_at` timestamp null, `updated_at` timestamp null) default character set utf8mb4 collate 'utf8mb4_unicode_ci') {"exception":"[object] (Illuminate\\Database\\QueryException(code: 42S01): SQLSTATE[42S01]: Base table or view already exists: 1050 Table 'personal_access_tokens' already exists (Connection: mysql, SQL: create table `personal_access_tokens` (`id` bigint unsigned not null auto_increment primary key, `tokenable_type` varchar(255) not null, `tokenable_id` bigint unsigned not null, `name` text not null, `token` varchar(64) not null, `abilities` text null, `last_used_at` timestamp null, `expires_at` timestamp null, `created_at` timestamp null, `updated_at` timestamp null) default character set utf8mb4 collate 'utf8mb4_unicode_ci') at D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Connection.php:825)
+[stacktrace]
+#0 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Connection.php(779): Illuminate/Database/Connection->runQueryCallback('create table `p...', Array, Object(Closure))
+#1 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Connection.php(560): Illuminate/Database/Connection->run('create table `p...', Array, Object(Closure))
+#2 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Schema/Blueprint.php(118): Illuminate/Database/Connection->statement('create table `p...')
+#3 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Schema/Builder.php(564): Illuminate/Database/Schema/Blueprint->build(Object(Illuminate/Database/MySqlConnection), Object(Illuminate/Database/Schema/Grammars/MySqlGrammar))
+#4 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Schema/Builder.php(418): Illuminate/Database/Schema/Builder->build(Object(Illuminate/Database/Schema/Blueprint))
+#5 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Support/Facades/Facade.php(361): Illuminate/Database/Schema/Builder->create('personal_access...', Object(Closure))
+#6 D:/Manda/VSCode/Catalog/catalog-backend/database/migrations/2019_12_14_000001_create_personal_access_tokens_table.php(14): Illuminate/Support/Facades/Facade::__callStatic('create', Array)
+#7 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(507): Illuminate/Database/Migrations/Migration@anonymous->up()
+#8 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(432): Illuminate/Database/Migrations/Migrator->runMethod(Object(Illuminate/Database/MySqlConnection), Object(Illuminate/Database/Migrations/Migration@anonymous), 'up')
+#9 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(441): Illuminate/Database/Migrations/Migrator->Illuminate/Database/Migrations/{closure}()
+#10 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(244): Illuminate/Database/Migrations/Migrator->runMigration(Object(Illuminate/Database/Migrations/Migration@anonymous), 'up')
+#11 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Console/View/Components/Task.php(40): Illuminate/Database/Migrations/Migrator->Illuminate/Database/Migrations/{closure}()
+#12 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(798): Illuminate/Console/View/Components/Task->render('2019_12_14_0000...', Object(Closure))
+#13 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(244): Illuminate/Database/Migrations/Migrator->write('Illuminate//Cons...', '2019_12_14_0000...', Object(Closure))
+#14 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(211): Illuminate/Database/Migrations/Migrator->runUp('D://Manda//VSCode...', 2, false)
+#15 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(138): Illuminate/Database/Migrations/Migrator->runPending(Array, Array)
+#16 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Console/Migrations/MigrateCommand.php(117): Illuminate/Database/Migrations/Migrator->run(Array, Array)
+#17 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(658): Illuminate/Database/Console/Migrations/MigrateCommand->Illuminate/Database/Console/Migrations/{closure}()
+#18 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Console/Migrations/MigrateCommand.php(110): Illuminate/Database/Migrations/Migrator->usingConnection(NULL, Object(Closure))
+#19 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Console/Migrations/MigrateCommand.php(89): Illuminate/Database/Console/Migrations/MigrateCommand->runMigrations()
+#20 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(36): Illuminate/Database/Console/Migrations/MigrateCommand->handle()
+#21 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Container/Util.php(43): Illuminate/Container/BoundMethod::Illuminate/Container/{closure}()
+#22 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(95): Illuminate/Container/Util::unwrapIfClosure(Object(Closure))
+#23 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(35): Illuminate/Container/BoundMethod::callBoundMethod(Object(Illuminate/Foundation/Application), Array, Object(Closure))
+#24 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Container/Container.php(696): Illuminate/Container/BoundMethod::call(Object(Illuminate/Foundation/Application), Array, Array, NULL)
+#25 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Console/Command.php(213): Illuminate/Container/Container->call(Array)
+#26 D:/Manda/VSCode/Catalog/catalog-backend/vendor/symfony/console/Command/Command.php(341): Illuminate/Console/Command->execute(Object(Symfony/Component/Console/Input/ArgvInput), Object(Illuminate/Console/OutputStyle))
+#27 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Console/Command.php(182): Symfony/Component/Console/Command/Command->run(Object(Symfony/Component/Console/Input/ArgvInput), Object(Illuminate/Console/OutputStyle))
+#28 D:/Manda/VSCode/Catalog/catalog-backend/vendor/symfony/console/Application.php(1117): Illuminate/Console/Command->run(Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#29 D:/Manda/VSCode/Catalog/catalog-backend/vendor/symfony/console/Application.php(356): Symfony/Component/Console/Application->doRunCommand(Object(Illuminate/Database/Console/Migrations/MigrateCommand), Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#30 D:/Manda/VSCode/Catalog/catalog-backend/vendor/symfony/console/Application.php(195): Symfony/Component/Console/Application->doRun(Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#31 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(198): Symfony/Component/Console/Application->run(Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#32 D:/Manda/VSCode/Catalog/catalog-backend/artisan(12): Illuminate/Foundation/Console/Kernel->handle(Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#33 {main}
+
+[previous exception] [object] (PDOException(code: 42S01): SQLSTATE[42S01]: Base table or view already exists: 1050 Table 'personal_access_tokens' already exists at D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Connection.php:571)
+[stacktrace]
+#0 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Connection.php(571): PDOStatement->execute()
+#1 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Connection.php(812): Illuminate/Database/Connection->Illuminate/Database/{closure}('create table `p...', Array)
+#2 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Connection.php(779): Illuminate/Database/Connection->runQueryCallback('create table `p...', Array, Object(Closure))
+#3 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Connection.php(560): Illuminate/Database/Connection->run('create table `p...', Array, Object(Closure))
+#4 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Schema/Blueprint.php(118): Illuminate/Database/Connection->statement('create table `p...')
+#5 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Schema/Builder.php(564): Illuminate/Database/Schema/Blueprint->build(Object(Illuminate/Database/MySqlConnection), Object(Illuminate/Database/Schema/Grammars/MySqlGrammar))
+#6 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Schema/Builder.php(418): Illuminate/Database/Schema/Builder->build(Object(Illuminate/Database/Schema/Blueprint))
+#7 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Support/Facades/Facade.php(361): Illuminate/Database/Schema/Builder->create('personal_access...', Object(Closure))
+#8 D:/Manda/VSCode/Catalog/catalog-backend/database/migrations/2019_12_14_000001_create_personal_access_tokens_table.php(14): Illuminate/Support/Facades/Facade::__callStatic('create', Array)
+#9 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(507): Illuminate/Database/Migrations/Migration@anonymous->up()
+#10 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(432): Illuminate/Database/Migrations/Migrator->runMethod(Object(Illuminate/Database/MySqlConnection), Object(Illuminate/Database/Migrations/Migration@anonymous), 'up')
+#11 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(441): Illuminate/Database/Migrations/Migrator->Illuminate/Database/Migrations/{closure}()
+#12 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(244): Illuminate/Database/Migrations/Migrator->runMigration(Object(Illuminate/Database/Migrations/Migration@anonymous), 'up')
+#13 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Console/View/Components/Task.php(40): Illuminate/Database/Migrations/Migrator->Illuminate/Database/Migrations/{closure}()
+#14 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(798): Illuminate/Console/View/Components/Task->render('2019_12_14_0000...', Object(Closure))
+#15 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(244): Illuminate/Database/Migrations/Migrator->write('Illuminate//Cons...', '2019_12_14_0000...', Object(Closure))
+#16 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(211): Illuminate/Database/Migrations/Migrator->runUp('D://Manda//VSCode...', 2, false)
+#17 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(138): Illuminate/Database/Migrations/Migrator->runPending(Array, Array)
+#18 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Console/Migrations/MigrateCommand.php(117): Illuminate/Database/Migrations/Migrator->run(Array, Array)
+#19 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(658): Illuminate/Database/Console/Migrations/MigrateCommand->Illuminate/Database/Console/Migrations/{closure}()
+#20 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Console/Migrations/MigrateCommand.php(110): Illuminate/Database/Migrations/Migrator->usingConnection(NULL, Object(Closure))
+#21 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Console/Migrations/MigrateCommand.php(89): Illuminate/Database/Console/Migrations/MigrateCommand->runMigrations()
+#22 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(36): Illuminate/Database/Console/Migrations/MigrateCommand->handle()
+#23 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Container/Util.php(43): Illuminate/Container/BoundMethod::Illuminate/Container/{closure}()
+#24 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(95): Illuminate/Container/Util::unwrapIfClosure(Object(Closure))
+#25 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(35): Illuminate/Container/BoundMethod::callBoundMethod(Object(Illuminate/Foundation/Application), Array, Object(Closure))
+#26 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Container/Container.php(696): Illuminate/Container/BoundMethod::call(Object(Illuminate/Foundation/Application), Array, Array, NULL)
+#27 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Console/Command.php(213): Illuminate/Container/Container->call(Array)
+#28 D:/Manda/VSCode/Catalog/catalog-backend/vendor/symfony/console/Command/Command.php(341): Illuminate/Console/Command->execute(Object(Symfony/Component/Console/Input/ArgvInput), Object(Illuminate/Console/OutputStyle))
+#29 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Console/Command.php(182): Symfony/Component/Console/Command/Command->run(Object(Symfony/Component/Console/Input/ArgvInput), Object(Illuminate/Console/OutputStyle))
+#30 D:/Manda/VSCode/Catalog/catalog-backend/vendor/symfony/console/Application.php(1117): Illuminate/Console/Command->run(Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#31 D:/Manda/VSCode/Catalog/catalog-backend/vendor/symfony/console/Application.php(356): Symfony/Component/Console/Application->doRunCommand(Object(Illuminate/Database/Console/Migrations/MigrateCommand), Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#32 D:/Manda/VSCode/Catalog/catalog-backend/vendor/symfony/console/Application.php(195): Symfony/Component/Console/Application->doRun(Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#33 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(198): Symfony/Component/Console/Application->run(Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#34 D:/Manda/VSCode/Catalog/catalog-backend/artisan(12): Illuminate/Foundation/Console/Kernel->handle(Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#35 {main}
+"} 
+[2026-04-10 15:04:11] local.ERROR: Connection could not be established with host "mailpit:1025": stream_socket_client(): php_network_getaddresses: getaddrinfo for mailpit failed: No such host is known.  {"exception":"[object] (Symfony\\Component\\Mailer\\Exception\\TransportException(code: 0): Connection could not be established with host \"mailpit:1025\": stream_socket_client(): php_network_getaddresses: getaddrinfo for mailpit failed: No such host is known.  at D:/Manda/VSCode/Catalog/catalog-backend/vendor/symfony/mailer/Transport/Smtp/Stream/SocketStream.php:154)
+[stacktrace]
+#0 [internal function]: Symfony/Component/Mailer/Transport/Smtp/Stream/SocketStream->Symfony/Component/Mailer/Transport/Smtp/Stream/{closure}(2, 'stream_socket_c...', 'D://Manda//VSCode...', 157)
+#1 D:/Manda/VSCode/Catalog/catalog-backend/vendor/symfony/mailer/Transport/Smtp/Stream/SocketStream.php(157): stream_socket_client('mailpit:1025', 0, '', 60.0, 4, Resource id #617)
+#2 D:/Manda/VSCode/Catalog/catalog-backend/vendor/symfony/mailer/Transport/Smtp/SmtpTransport.php(268): Symfony/Component/Mailer/Transport/Smtp/Stream/SocketStream->initialize()
+#3 D:/Manda/VSCode/Catalog/catalog-backend/vendor/symfony/mailer/Transport/Smtp/SmtpTransport.php(200): Symfony/Component/Mailer/Transport/Smtp/SmtpTransport->start()
+#4 D:/Manda/VSCode/Catalog/catalog-backend/vendor/symfony/mailer/Transport/AbstractTransport.php(69): Symfony/Component/Mailer/Transport/Smtp/SmtpTransport->doSend(Object(Symfony/Component/Mailer/SentMessage))
+#5 D:/Manda/VSCode/Catalog/catalog-backend/vendor/symfony/mailer/Transport/Smtp/SmtpTransport.php(138): Symfony/Component/Mailer/Transport/AbstractTransport->send(Object(Symfony/Component/Mime/Email), Object(Symfony/Component/Mailer/DelayedEnvelope))
+#6 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Mail/Mailer.php(585): Symfony/Component/Mailer/Transport/Smtp/SmtpTransport->send(Object(Symfony/Component/Mime/Email), Object(Symfony/Component/Mailer/DelayedEnvelope))
+#7 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Mail/Mailer.php(332): Illuminate/Mail/Mailer->sendSymfonyMessage(Object(Symfony/Component/Mime/Email))
+#8 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Mail/Mailer.php(224): Illuminate/Mail/Mailer->send(NULL, Array, Object(Closure))
+#9 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Mail/MailManager.php(622): Illuminate/Mail/Mailer->raw('Kode verifikasi...', Object(Closure))
+#10 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Support/Facades/Facade.php(361): Illuminate/Mail/MailManager->__call('raw', Array)
+#11 D:/Manda/VSCode/Catalog/catalog-backend/app/Services/TwoFactorService.php(22): Illuminate/Support/Facades/Facade::__callStatic('raw', Array)
+#12 D:/Manda/VSCode/Catalog/catalog-backend/app/Http/Controllers/Auth/AuthController.php(75): App/Services/TwoFactorService->generateAndSend(Object(App/Models/User))
+#13 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Routing/ControllerDispatcher.php(47): App/Http/Controllers/Auth/AuthController->login(Object(Illuminate/Http/Request))
+#14 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Routing/Route.php(266): Illuminate/Routing/ControllerDispatcher->dispatch(Object(Illuminate/Routing/Route), Object(App/Http/Controllers/Auth/AuthController), 'login')
+#15 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Routing/Route.php(212): Illuminate/Routing/Route->runController()
+#16 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Routing/Router.php(808): Illuminate/Routing/Route->run()
+#17 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(170): Illuminate/Routing/Router->Illuminate/Routing/{closure}(Object(Illuminate/Http/Request))
+#18 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Routing/Middleware/SubstituteBindings.php(51): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#19 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Routing/Middleware/SubstituteBindings->handle(Object(Illuminate/Http/Request), Object(Closure))
+#20 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/sanctum/src/Http/Middleware/EnsureFrontendRequestsAreStateful.php(26): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#21 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(170): Laravel/Sanctum/Http/Middleware/EnsureFrontendRequestsAreStateful->Laravel/Sanctum/Http/Middleware/{closure}(Object(Illuminate/Http/Request))
+#22 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(127): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#23 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/sanctum/src/Http/Middleware/EnsureFrontendRequestsAreStateful.php(25): Illuminate/Pipeline/Pipeline->then(Object(Closure))
+#24 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Laravel/Sanctum/Http/Middleware/EnsureFrontendRequestsAreStateful->handle(Object(Illuminate/Http/Request), Object(Closure))
+#25 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(127): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#26 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Routing/Router.php(807): Illuminate/Pipeline/Pipeline->then(Object(Closure))
+#27 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Routing/Router.php(786): Illuminate/Routing/Router->runRouteWithinStack(Object(Illuminate/Routing/Route), Object(Illuminate/Http/Request))
+#28 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Routing/Router.php(750): Illuminate/Routing/Router->runRoute(Object(Illuminate/Http/Request), Object(Illuminate/Routing/Route))
+#29 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Routing/Router.php(739): Illuminate/Routing/Router->dispatchToRoute(Object(Illuminate/Http/Request))
+#30 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(201): Illuminate/Routing/Router->dispatch(Object(Illuminate/Http/Request))
+#31 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(170): Illuminate/Foundation/Http/Kernel->Illuminate/Foundation/Http/{closure}(Object(Illuminate/Http/Request))
+#32 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(21): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#33 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ConvertEmptyStringsToNull.php(31): Illuminate/Foundation/Http/Middleware/TransformsRequest->handle(Object(Illuminate/Http/Request), Object(Closure))
+#34 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Foundation/Http/Middleware/ConvertEmptyStringsToNull->handle(Object(Illuminate/Http/Request), Object(Closure))
+#35 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(21): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#36 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TrimStrings.php(51): Illuminate/Foundation/Http/Middleware/TransformsRequest->handle(Object(Illuminate/Http/Request), Object(Closure))
+#37 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Foundation/Http/Middleware/TrimStrings->handle(Object(Illuminate/Http/Request), Object(Closure))
+#38 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Http/Middleware/ValidatePostSize.php(27): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#39 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Http/Middleware/ValidatePostSize->handle(Object(Illuminate/Http/Request), Object(Closure))
+#40 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/PreventRequestsDuringMaintenance.php(110): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#41 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Foundation/Http/Middleware/PreventRequestsDuringMaintenance->handle(Object(Illuminate/Http/Request), Object(Closure))
+#42 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Http/Middleware/HandleCors.php(62): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#43 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Http/Middleware/HandleCors->handle(Object(Illuminate/Http/Request), Object(Closure))
+#44 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Http/Middleware/TrustProxies.php(58): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#45 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Http/Middleware/TrustProxies->handle(Object(Illuminate/Http/Request), Object(Closure))
+#46 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/InvokeDeferredCallbacks.php(22): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#47 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Foundation/Http/Middleware/InvokeDeferredCallbacks->handle(Object(Illuminate/Http/Request), Object(Closure))
+#48 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(127): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#49 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(176): Illuminate/Pipeline/Pipeline->then(Object(Closure))
+#50 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(145): Illuminate/Foundation/Http/Kernel->sendRequestThroughRouter(Object(Illuminate/Http/Request))
+#51 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1220): Illuminate/Foundation/Http/Kernel->handle(Object(Illuminate/Http/Request))
+#52 D:/Manda/VSCode/Catalog/catalog-backend/public/index.php(17): Illuminate/Foundation/Application->handleRequest(Object(Illuminate/Http/Request))
+#53 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Foundation/resources/server.php(23): require_once('D://Manda//VSCode...')
+#54 {main}
+"} 
+[2026-04-10 15:07:54] local.DEBUG: From: Timur Raya Catalog <noreply@timurraya.com>
+To: admin@email.com
+Subject: [Timur Raya Catalog] Kode Verifikasi 2FA
+MIME-Version: 1.0
+Date: Fri, 10 Apr 2026 15:07:54 +0700
+Message-ID: <27e4ca01408d650dfb0563c47ab0f0fe@timurraya.com>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+Kode verifikasi Anda adalah: 813916
+
+Kode berlaku selama 10 menit.  
+[2026-04-10 15:26:14] local.DEBUG: From: Timur Raya Catalog <noreply@timurraya.com>
+To: admin@email.com
+Subject: [Timur Raya Catalog] Kode Verifikasi 2FA
+MIME-Version: 1.0
+Date: Fri, 10 Apr 2026 15:26:14 +0700
+Message-ID: <2199627117978734c2c4dbbf1b1d5780@timurraya.com>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+Kode verifikasi Anda adalah: 641294
+
+Kode berlaku selama 10 menit.  
+[2026-04-10 15:48:57] local.ERROR: SQLSTATE[42S01]: Base table or view already exists: 1050 Table 'personal_access_tokens' already exists (Connection: mysql, SQL: create table `personal_access_tokens` (`id` bigint unsigned not null auto_increment primary key, `tokenable_type` varchar(255) not null, `tokenable_id` bigint unsigned not null, `name` varchar(255) not null, `token` varchar(64) not null, `abilities` text null, `last_used_at` timestamp null, `expires_at` timestamp null, `created_at` timestamp null, `updated_at` timestamp null) default character set utf8mb4 collate 'utf8mb4_unicode_ci') {"exception":"[object] (Illuminate\\Database\\QueryException(code: 42S01): SQLSTATE[42S01]: Base table or view already exists: 1050 Table 'personal_access_tokens' already exists (Connection: mysql, SQL: create table `personal_access_tokens` (`id` bigint unsigned not null auto_increment primary key, `tokenable_type` varchar(255) not null, `tokenable_id` bigint unsigned not null, `name` varchar(255) not null, `token` varchar(64) not null, `abilities` text null, `last_used_at` timestamp null, `expires_at` timestamp null, `created_at` timestamp null, `updated_at` timestamp null) default character set utf8mb4 collate 'utf8mb4_unicode_ci') at D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Connection.php:825)
+[stacktrace]
+#0 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Connection.php(779): Illuminate/Database/Connection->runQueryCallback('create table `p...', Array, Object(Closure))
+#1 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Connection.php(560): Illuminate/Database/Connection->run('create table `p...', Array, Object(Closure))
+#2 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Schema/Blueprint.php(118): Illuminate/Database/Connection->statement('create table `p...')
+#3 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Schema/Builder.php(564): Illuminate/Database/Schema/Blueprint->build(Object(Illuminate/Database/MySqlConnection), Object(Illuminate/Database/Schema/Grammars/MySqlGrammar))
+#4 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Schema/Builder.php(418): Illuminate/Database/Schema/Builder->build(Object(Illuminate/Database/Schema/Blueprint))
+#5 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Support/Facades/Facade.php(361): Illuminate/Database/Schema/Builder->create('personal_access...', Object(Closure))
+#6 D:/Manda/VSCode/Catalog/catalog-backend/database/migrations/2024_01_09_create_personal_access_tokens_table.php(10): Illuminate/Support/Facades/Facade::__callStatic('create', Array)
+#7 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(507): Illuminate/Database/Migrations/Migration@anonymous->up()
+#8 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(432): Illuminate/Database/Migrations/Migrator->runMethod(Object(Illuminate/Database/MySqlConnection), Object(Illuminate/Database/Migrations/Migration@anonymous), 'up')
+#9 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(441): Illuminate/Database/Migrations/Migrator->Illuminate/Database/Migrations/{closure}()
+#10 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(244): Illuminate/Database/Migrations/Migrator->runMigration(Object(Illuminate/Database/Migrations/Migration@anonymous), 'up')
+#11 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Console/View/Components/Task.php(40): Illuminate/Database/Migrations/Migrator->Illuminate/Database/Migrations/{closure}()
+#12 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(798): Illuminate/Console/View/Components/Task->render('2024_01_09_crea...', Object(Closure))
+#13 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(244): Illuminate/Database/Migrations/Migrator->write('Illuminate//Cons...', '2024_01_09_crea...', Object(Closure))
+#14 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(211): Illuminate/Database/Migrations/Migrator->runUp('D://Manda//VSCode...', 1, false)
+#15 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(138): Illuminate/Database/Migrations/Migrator->runPending(Array, Array)
+#16 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Console/Migrations/MigrateCommand.php(117): Illuminate/Database/Migrations/Migrator->run(Array, Array)
+#17 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(658): Illuminate/Database/Console/Migrations/MigrateCommand->Illuminate/Database/Console/Migrations/{closure}()
+#18 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Console/Migrations/MigrateCommand.php(110): Illuminate/Database/Migrations/Migrator->usingConnection(NULL, Object(Closure))
+#19 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Console/Migrations/MigrateCommand.php(89): Illuminate/Database/Console/Migrations/MigrateCommand->runMigrations()
+#20 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(36): Illuminate/Database/Console/Migrations/MigrateCommand->handle()
+#21 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Container/Util.php(43): Illuminate/Container/BoundMethod::Illuminate/Container/{closure}()
+#22 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(95): Illuminate/Container/Util::unwrapIfClosure(Object(Closure))
+#23 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(35): Illuminate/Container/BoundMethod::callBoundMethod(Object(Illuminate/Foundation/Application), Array, Object(Closure))
+#24 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Container/Container.php(696): Illuminate/Container/BoundMethod::call(Object(Illuminate/Foundation/Application), Array, Array, NULL)
+#25 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Console/Command.php(213): Illuminate/Container/Container->call(Array)
+#26 D:/Manda/VSCode/Catalog/catalog-backend/vendor/symfony/console/Command/Command.php(341): Illuminate/Console/Command->execute(Object(Symfony/Component/Console/Input/ArrayInput), Object(Illuminate/Console/OutputStyle))
+#27 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Console/Command.php(182): Symfony/Component/Console/Command/Command->run(Object(Symfony/Component/Console/Input/ArrayInput), Object(Illuminate/Console/OutputStyle))
+#28 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Console/Concerns/CallsCommands.php(68): Illuminate/Console/Command->run(Object(Symfony/Component/Console/Input/ArrayInput), Object(Illuminate/Console/OutputStyle))
+#29 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Console/Concerns/CallsCommands.php(29): Illuminate/Console/Command->runCommand('migrate', Array, Object(Illuminate/Console/OutputStyle))
+#30 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Console/Migrations/FreshCommand.php(82): Illuminate/Console/Command->call('migrate', Array)
+#31 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(36): Illuminate/Database/Console/Migrations/FreshCommand->handle()
+#32 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Container/Util.php(43): Illuminate/Container/BoundMethod::Illuminate/Container/{closure}()
+#33 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(95): Illuminate/Container/Util::unwrapIfClosure(Object(Closure))
+#34 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(35): Illuminate/Container/BoundMethod::callBoundMethod(Object(Illuminate/Foundation/Application), Array, Object(Closure))
+#35 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Container/Container.php(696): Illuminate/Container/BoundMethod::call(Object(Illuminate/Foundation/Application), Array, Array, NULL)
+#36 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Console/Command.php(213): Illuminate/Container/Container->call(Array)
+#37 D:/Manda/VSCode/Catalog/catalog-backend/vendor/symfony/console/Command/Command.php(341): Illuminate/Console/Command->execute(Object(Symfony/Component/Console/Input/ArgvInput), Object(Illuminate/Console/OutputStyle))
+#38 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Console/Command.php(182): Symfony/Component/Console/Command/Command->run(Object(Symfony/Component/Console/Input/ArgvInput), Object(Illuminate/Console/OutputStyle))
+#39 D:/Manda/VSCode/Catalog/catalog-backend/vendor/symfony/console/Application.php(1117): Illuminate/Console/Command->run(Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#40 D:/Manda/VSCode/Catalog/catalog-backend/vendor/symfony/console/Application.php(356): Symfony/Component/Console/Application->doRunCommand(Object(Illuminate/Database/Console/Migrations/FreshCommand), Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#41 D:/Manda/VSCode/Catalog/catalog-backend/vendor/symfony/console/Application.php(195): Symfony/Component/Console/Application->doRun(Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#42 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(198): Symfony/Component/Console/Application->run(Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#43 D:/Manda/VSCode/Catalog/catalog-backend/artisan(12): Illuminate/Foundation/Console/Kernel->handle(Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#44 {main}
+
+[previous exception] [object] (PDOException(code: 42S01): SQLSTATE[42S01]: Base table or view already exists: 1050 Table 'personal_access_tokens' already exists at D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Connection.php:571)
+[stacktrace]
+#0 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Connection.php(571): PDOStatement->execute()
+#1 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Connection.php(812): Illuminate/Database/Connection->Illuminate/Database/{closure}('create table `p...', Array)
+#2 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Connection.php(779): Illuminate/Database/Connection->runQueryCallback('create table `p...', Array, Object(Closure))
+#3 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Connection.php(560): Illuminate/Database/Connection->run('create table `p...', Array, Object(Closure))
+#4 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Schema/Blueprint.php(118): Illuminate/Database/Connection->statement('create table `p...')
+#5 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Schema/Builder.php(564): Illuminate/Database/Schema/Blueprint->build(Object(Illuminate/Database/MySqlConnection), Object(Illuminate/Database/Schema/Grammars/MySqlGrammar))
+#6 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Schema/Builder.php(418): Illuminate/Database/Schema/Builder->build(Object(Illuminate/Database/Schema/Blueprint))
+#7 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Support/Facades/Facade.php(361): Illuminate/Database/Schema/Builder->create('personal_access...', Object(Closure))
+#8 D:/Manda/VSCode/Catalog/catalog-backend/database/migrations/2024_01_09_create_personal_access_tokens_table.php(10): Illuminate/Support/Facades/Facade::__callStatic('create', Array)
+#9 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(507): Illuminate/Database/Migrations/Migration@anonymous->up()
+#10 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(432): Illuminate/Database/Migrations/Migrator->runMethod(Object(Illuminate/Database/MySqlConnection), Object(Illuminate/Database/Migrations/Migration@anonymous), 'up')
+#11 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(441): Illuminate/Database/Migrations/Migrator->Illuminate/Database/Migrations/{closure}()
+#12 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(244): Illuminate/Database/Migrations/Migrator->runMigration(Object(Illuminate/Database/Migrations/Migration@anonymous), 'up')
+#13 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Console/View/Components/Task.php(40): Illuminate/Database/Migrations/Migrator->Illuminate/Database/Migrations/{closure}()
+#14 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(798): Illuminate/Console/View/Components/Task->render('2024_01_09_crea...', Object(Closure))
+#15 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(244): Illuminate/Database/Migrations/Migrator->write('Illuminate//Cons...', '2024_01_09_crea...', Object(Closure))
+#16 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(211): Illuminate/Database/Migrations/Migrator->runUp('D://Manda//VSCode...', 1, false)
+#17 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(138): Illuminate/Database/Migrations/Migrator->runPending(Array, Array)
+#18 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Console/Migrations/MigrateCommand.php(117): Illuminate/Database/Migrations/Migrator->run(Array, Array)
+#19 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(658): Illuminate/Database/Console/Migrations/MigrateCommand->Illuminate/Database/Console/Migrations/{closure}()
+#20 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Console/Migrations/MigrateCommand.php(110): Illuminate/Database/Migrations/Migrator->usingConnection(NULL, Object(Closure))
+#21 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Console/Migrations/MigrateCommand.php(89): Illuminate/Database/Console/Migrations/MigrateCommand->runMigrations()
+#22 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(36): Illuminate/Database/Console/Migrations/MigrateCommand->handle()
+#23 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Container/Util.php(43): Illuminate/Container/BoundMethod::Illuminate/Container/{closure}()
+#24 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(95): Illuminate/Container/Util::unwrapIfClosure(Object(Closure))
+#25 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(35): Illuminate/Container/BoundMethod::callBoundMethod(Object(Illuminate/Foundation/Application), Array, Object(Closure))
+#26 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Container/Container.php(696): Illuminate/Container/BoundMethod::call(Object(Illuminate/Foundation/Application), Array, Array, NULL)
+#27 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Console/Command.php(213): Illuminate/Container/Container->call(Array)
+#28 D:/Manda/VSCode/Catalog/catalog-backend/vendor/symfony/console/Command/Command.php(341): Illuminate/Console/Command->execute(Object(Symfony/Component/Console/Input/ArrayInput), Object(Illuminate/Console/OutputStyle))
+#29 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Console/Command.php(182): Symfony/Component/Console/Command/Command->run(Object(Symfony/Component/Console/Input/ArrayInput), Object(Illuminate/Console/OutputStyle))
+#30 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Console/Concerns/CallsCommands.php(68): Illuminate/Console/Command->run(Object(Symfony/Component/Console/Input/ArrayInput), Object(Illuminate/Console/OutputStyle))
+#31 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Console/Concerns/CallsCommands.php(29): Illuminate/Console/Command->runCommand('migrate', Array, Object(Illuminate/Console/OutputStyle))
+#32 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Console/Migrations/FreshCommand.php(82): Illuminate/Console/Command->call('migrate', Array)
+#33 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(36): Illuminate/Database/Console/Migrations/FreshCommand->handle()
+#34 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Container/Util.php(43): Illuminate/Container/BoundMethod::Illuminate/Container/{closure}()
+#35 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(95): Illuminate/Container/Util::unwrapIfClosure(Object(Closure))
+#36 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(35): Illuminate/Container/BoundMethod::callBoundMethod(Object(Illuminate/Foundation/Application), Array, Object(Closure))
+#37 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Container/Container.php(696): Illuminate/Container/BoundMethod::call(Object(Illuminate/Foundation/Application), Array, Array, NULL)
+#38 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Console/Command.php(213): Illuminate/Container/Container->call(Array)
+#39 D:/Manda/VSCode/Catalog/catalog-backend/vendor/symfony/console/Command/Command.php(341): Illuminate/Console/Command->execute(Object(Symfony/Component/Console/Input/ArgvInput), Object(Illuminate/Console/OutputStyle))
+#40 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Console/Command.php(182): Symfony/Component/Console/Command/Command->run(Object(Symfony/Component/Console/Input/ArgvInput), Object(Illuminate/Console/OutputStyle))
+#41 D:/Manda/VSCode/Catalog/catalog-backend/vendor/symfony/console/Application.php(1117): Illuminate/Console/Command->run(Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#42 D:/Manda/VSCode/Catalog/catalog-backend/vendor/symfony/console/Application.php(356): Symfony/Component/Console/Application->doRunCommand(Object(Illuminate/Database/Console/Migrations/FreshCommand), Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#43 D:/Manda/VSCode/Catalog/catalog-backend/vendor/symfony/console/Application.php(195): Symfony/Component/Console/Application->doRun(Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#44 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(198): Symfony/Component/Console/Application->run(Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#45 D:/Manda/VSCode/Catalog/catalog-backend/artisan(12): Illuminate/Foundation/Console/Kernel->handle(Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#46 {main}
+"} 
+[2026-04-10 16:02:18] local.DEBUG: From: Timur Raya Catalog <noreply@timurraya.com>
+To: test@mail.com
+Subject: [Timur Raya Catalog] Kode Verifikasi 2FA
+MIME-Version: 1.0
+Date: Fri, 10 Apr 2026 16:02:18 +0700
+Message-ID: <b577790c0504ccc6b83ace040800a1ed@timurraya.com>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+Kode verifikasi Anda adalah: 573297
+
+Kode berlaku selama 10 menit.  
+[2026-04-10 16:17:05] local.DEBUG: From: Timur Raya Catalog <noreply@timurraya.com>
+To: test2@mail.com
+Subject: [Timur Raya Catalog] Kode Verifikasi 2FA
+MIME-Version: 1.0
+Date: Fri, 10 Apr 2026 16:17:05 +0700
+Message-ID: <2c2d499a7a1f1236587a59398cefa21a@timurraya.com>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+Kode verifikasi Anda adalah: 126908
+
+Kode berlaku selama 10 menit.  
+[2026-04-10 16:21:46] local.DEBUG: From: Timur Raya Catalog <noreply@timurraya.com>
+To: test2@mail.com
+Subject: [Timur Raya Catalog] Kode Verifikasi 2FA
+MIME-Version: 1.0
+Date: Fri, 10 Apr 2026 16:21:46 +0700
+Message-ID: <b5667e1bbda70c309ac95f6374b4f517@timurraya.com>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+Kode verifikasi Anda adalah: 282752
+
+Kode berlaku selama 10 menit.  
+[2026-04-10 16:31:39] local.ERROR: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'e-catalog.cache' doesn't exist (Connection: mysql, SQL: delete from `cache`) {"exception":"[object] (Illuminate\\Database\\QueryException(code: 42S02): SQLSTATE[42S02]: Base table or view not found: 1146 Table 'e-catalog.cache' doesn't exist (Connection: mysql, SQL: delete from `cache`) at D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Connection.php:825)
+[stacktrace]
+#0 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Connection.php(779): Illuminate/Database/Connection->runQueryCallback('delete from `ca...', Array, Object(Closure))
+#1 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Connection.php(584): Illuminate/Database/Connection->run('delete from `ca...', Array, Object(Closure))
+#2 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Connection.php(548): Illuminate/Database/Connection->affectingStatement('delete from `ca...', Array)
+#3 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php(4024): Illuminate/Database/Connection->delete('delete from `ca...', Array)
+#4 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Cache/DatabaseStore.php(422): Illuminate/Database/Query/Builder->delete()
+#5 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Cache/Repository.php(792): Illuminate/Cache/DatabaseStore->flush()
+#6 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Cache/Console/ClearCommand.php(69): Illuminate/Cache/Repository->__call('flush', Array)
+#7 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(36): Illuminate/Cache/Console/ClearCommand->handle()
+#8 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Container/Util.php(43): Illuminate/Container/BoundMethod::Illuminate/Container/{closure}()
+#9 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(95): Illuminate/Container/Util::unwrapIfClosure(Object(Closure))
+#10 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(35): Illuminate/Container/BoundMethod::callBoundMethod(Object(Illuminate/Foundation/Application), Array, Object(Closure))
+#11 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Container/Container.php(696): Illuminate/Container/BoundMethod::call(Object(Illuminate/Foundation/Application), Array, Array, NULL)
+#12 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Console/Command.php(213): Illuminate/Container/Container->call(Array)
+#13 D:/Manda/VSCode/Catalog/catalog-backend/vendor/symfony/console/Command/Command.php(341): Illuminate/Console/Command->execute(Object(Symfony/Component/Console/Input/ArgvInput), Object(Illuminate/Console/OutputStyle))
+#14 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Console/Command.php(182): Symfony/Component/Console/Command/Command->run(Object(Symfony/Component/Console/Input/ArgvInput), Object(Illuminate/Console/OutputStyle))
+#15 D:/Manda/VSCode/Catalog/catalog-backend/vendor/symfony/console/Application.php(1117): Illuminate/Console/Command->run(Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#16 D:/Manda/VSCode/Catalog/catalog-backend/vendor/symfony/console/Application.php(356): Symfony/Component/Console/Application->doRunCommand(Object(Illuminate/Cache/Console/ClearCommand), Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#17 D:/Manda/VSCode/Catalog/catalog-backend/vendor/symfony/console/Application.php(195): Symfony/Component/Console/Application->doRun(Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#18 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(198): Symfony/Component/Console/Application->run(Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#19 D:/Manda/VSCode/Catalog/catalog-backend/artisan(12): Illuminate/Foundation/Console/Kernel->handle(Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#20 {main}
+
+[previous exception] [object] (PDOException(code: 42S02): SQLSTATE[42S02]: Base table or view not found: 1146 Table 'e-catalog.cache' doesn't exist at D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Connection.php:592)
+[stacktrace]
+#0 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Connection.php(592): PDO->prepare('delete from `ca...')
+#1 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Connection.php(812): Illuminate/Database/Connection->Illuminate/Database/{closure}('delete from `ca...', Array)
+#2 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Connection.php(779): Illuminate/Database/Connection->runQueryCallback('delete from `ca...', Array, Object(Closure))
+#3 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Connection.php(584): Illuminate/Database/Connection->run('delete from `ca...', Array, Object(Closure))
+#4 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Connection.php(548): Illuminate/Database/Connection->affectingStatement('delete from `ca...', Array)
+#5 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php(4024): Illuminate/Database/Connection->delete('delete from `ca...', Array)
+#6 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Cache/DatabaseStore.php(422): Illuminate/Database/Query/Builder->delete()
+#7 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Cache/Repository.php(792): Illuminate/Cache/DatabaseStore->flush()
+#8 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Cache/Console/ClearCommand.php(69): Illuminate/Cache/Repository->__call('flush', Array)
+#9 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(36): Illuminate/Cache/Console/ClearCommand->handle()
+#10 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Container/Util.php(43): Illuminate/Container/BoundMethod::Illuminate/Container/{closure}()
+#11 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(95): Illuminate/Container/Util::unwrapIfClosure(Object(Closure))
+#12 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(35): Illuminate/Container/BoundMethod::callBoundMethod(Object(Illuminate/Foundation/Application), Array, Object(Closure))
+#13 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Container/Container.php(696): Illuminate/Container/BoundMethod::call(Object(Illuminate/Foundation/Application), Array, Array, NULL)
+#14 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Console/Command.php(213): Illuminate/Container/Container->call(Array)
+#15 D:/Manda/VSCode/Catalog/catalog-backend/vendor/symfony/console/Command/Command.php(341): Illuminate/Console/Command->execute(Object(Symfony/Component/Console/Input/ArgvInput), Object(Illuminate/Console/OutputStyle))
+#16 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Console/Command.php(182): Symfony/Component/Console/Command/Command->run(Object(Symfony/Component/Console/Input/ArgvInput), Object(Illuminate/Console/OutputStyle))
+#17 D:/Manda/VSCode/Catalog/catalog-backend/vendor/symfony/console/Application.php(1117): Illuminate/Console/Command->run(Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#18 D:/Manda/VSCode/Catalog/catalog-backend/vendor/symfony/console/Application.php(356): Symfony/Component/Console/Application->doRunCommand(Object(Illuminate/Cache/Console/ClearCommand), Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#19 D:/Manda/VSCode/Catalog/catalog-backend/vendor/symfony/console/Application.php(195): Symfony/Component/Console/Application->doRun(Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#20 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(198): Symfony/Component/Console/Application->run(Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#21 D:/Manda/VSCode/Catalog/catalog-backend/artisan(12): Illuminate/Foundation/Console/Kernel->handle(Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#22 {main}
+"} 
+[2026-04-10 16:36:01] local.DEBUG: From: Timur Raya Catalog <noreply@timurraya.com>
+To: test2@mail.com
+Subject: [Timur Raya Catalog] Kode Verifikasi 2FA
+MIME-Version: 1.0
+Date: Fri, 10 Apr 2026 16:36:01 +0700
+Message-ID: <d6884564d386461e57f16d43b77e0d70@timurraya.com>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+Kode verifikasi Anda adalah: 644433
+
+Kode berlaku selama 10 menit.  
+[2026-04-10 16:46:35] local.ERROR: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'e-catalog.cache' doesn't exist (Connection: mysql, SQL: delete from `cache`) {"exception":"[object] (Illuminate\\Database\\QueryException(code: 42S02): SQLSTATE[42S02]: Base table or view not found: 1146 Table 'e-catalog.cache' doesn't exist (Connection: mysql, SQL: delete from `cache`) at D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Connection.php:825)
+[stacktrace]
+#0 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Connection.php(779): Illuminate/Database/Connection->runQueryCallback('delete from `ca...', Array, Object(Closure))
+#1 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Connection.php(584): Illuminate/Database/Connection->run('delete from `ca...', Array, Object(Closure))
+#2 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Connection.php(548): Illuminate/Database/Connection->affectingStatement('delete from `ca...', Array)
+#3 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php(4024): Illuminate/Database/Connection->delete('delete from `ca...', Array)
+#4 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Cache/DatabaseStore.php(422): Illuminate/Database/Query/Builder->delete()
+#5 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Cache/Repository.php(792): Illuminate/Cache/DatabaseStore->flush()
+#6 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Cache/Console/ClearCommand.php(69): Illuminate/Cache/Repository->__call('flush', Array)
+#7 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(36): Illuminate/Cache/Console/ClearCommand->handle()
+#8 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Container/Util.php(43): Illuminate/Container/BoundMethod::Illuminate/Container/{closure}()
+#9 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(95): Illuminate/Container/Util::unwrapIfClosure(Object(Closure))
+#10 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(35): Illuminate/Container/BoundMethod::callBoundMethod(Object(Illuminate/Foundation/Application), Array, Object(Closure))
+#11 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Container/Container.php(696): Illuminate/Container/BoundMethod::call(Object(Illuminate/Foundation/Application), Array, Array, NULL)
+#12 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Console/Command.php(213): Illuminate/Container/Container->call(Array)
+#13 D:/Manda/VSCode/Catalog/catalog-backend/vendor/symfony/console/Command/Command.php(341): Illuminate/Console/Command->execute(Object(Symfony/Component/Console/Input/ArgvInput), Object(Illuminate/Console/OutputStyle))
+#14 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Console/Command.php(182): Symfony/Component/Console/Command/Command->run(Object(Symfony/Component/Console/Input/ArgvInput), Object(Illuminate/Console/OutputStyle))
+#15 D:/Manda/VSCode/Catalog/catalog-backend/vendor/symfony/console/Application.php(1117): Illuminate/Console/Command->run(Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#16 D:/Manda/VSCode/Catalog/catalog-backend/vendor/symfony/console/Application.php(356): Symfony/Component/Console/Application->doRunCommand(Object(Illuminate/Cache/Console/ClearCommand), Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#17 D:/Manda/VSCode/Catalog/catalog-backend/vendor/symfony/console/Application.php(195): Symfony/Component/Console/Application->doRun(Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#18 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(198): Symfony/Component/Console/Application->run(Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#19 D:/Manda/VSCode/Catalog/catalog-backend/artisan(12): Illuminate/Foundation/Console/Kernel->handle(Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#20 {main}
+
+[previous exception] [object] (PDOException(code: 42S02): SQLSTATE[42S02]: Base table or view not found: 1146 Table 'e-catalog.cache' doesn't exist at D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Connection.php:592)
+[stacktrace]
+#0 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Connection.php(592): PDO->prepare('delete from `ca...')
+#1 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Connection.php(812): Illuminate/Database/Connection->Illuminate/Database/{closure}('delete from `ca...', Array)
+#2 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Connection.php(779): Illuminate/Database/Connection->runQueryCallback('delete from `ca...', Array, Object(Closure))
+#3 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Connection.php(584): Illuminate/Database/Connection->run('delete from `ca...', Array, Object(Closure))
+#4 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Connection.php(548): Illuminate/Database/Connection->affectingStatement('delete from `ca...', Array)
+#5 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php(4024): Illuminate/Database/Connection->delete('delete from `ca...', Array)
+#6 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Cache/DatabaseStore.php(422): Illuminate/Database/Query/Builder->delete()
+#7 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Cache/Repository.php(792): Illuminate/Cache/DatabaseStore->flush()
+#8 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Cache/Console/ClearCommand.php(69): Illuminate/Cache/Repository->__call('flush', Array)
+#9 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(36): Illuminate/Cache/Console/ClearCommand->handle()
+#10 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Container/Util.php(43): Illuminate/Container/BoundMethod::Illuminate/Container/{closure}()
+#11 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(95): Illuminate/Container/Util::unwrapIfClosure(Object(Closure))
+#12 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(35): Illuminate/Container/BoundMethod::callBoundMethod(Object(Illuminate/Foundation/Application), Array, Object(Closure))
+#13 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Container/Container.php(696): Illuminate/Container/BoundMethod::call(Object(Illuminate/Foundation/Application), Array, Array, NULL)
+#14 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Console/Command.php(213): Illuminate/Container/Container->call(Array)
+#15 D:/Manda/VSCode/Catalog/catalog-backend/vendor/symfony/console/Command/Command.php(341): Illuminate/Console/Command->execute(Object(Symfony/Component/Console/Input/ArgvInput), Object(Illuminate/Console/OutputStyle))
+#16 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Console/Command.php(182): Symfony/Component/Console/Command/Command->run(Object(Symfony/Component/Console/Input/ArgvInput), Object(Illuminate/Console/OutputStyle))
+#17 D:/Manda/VSCode/Catalog/catalog-backend/vendor/symfony/console/Application.php(1117): Illuminate/Console/Command->run(Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#18 D:/Manda/VSCode/Catalog/catalog-backend/vendor/symfony/console/Application.php(356): Symfony/Component/Console/Application->doRunCommand(Object(Illuminate/Cache/Console/ClearCommand), Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#19 D:/Manda/VSCode/Catalog/catalog-backend/vendor/symfony/console/Application.php(195): Symfony/Component/Console/Application->doRun(Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#20 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(198): Symfony/Component/Console/Application->run(Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#21 D:/Manda/VSCode/Catalog/catalog-backend/artisan(12): Illuminate/Foundation/Console/Kernel->handle(Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#22 {main}
+"} 
+[2026-04-10 16:47:07] local.DEBUG: From: Timur Raya Catalog <noreply@timurraya.com>
+To: test2@mail.com
+Subject: [Timur Raya Catalog] Kode Verifikasi 2FA
+MIME-Version: 1.0
+Date: Fri, 10 Apr 2026 16:47:07 +0700
+Message-ID: <81901992e654893097e39511d4d3c5fa@timurraya.com>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+Kode verifikasi Anda adalah: 716071
+
+Kode berlaku selama 10 menit.  
+[2026-04-10 17:14:21] local.ERROR: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'e-catalog.cache' doesn't exist (Connection: mysql, SQL: delete from `cache`) {"exception":"[object] (Illuminate\\Database\\QueryException(code: 42S02): SQLSTATE[42S02]: Base table or view not found: 1146 Table 'e-catalog.cache' doesn't exist (Connection: mysql, SQL: delete from `cache`) at D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Connection.php:825)
+[stacktrace]
+#0 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Connection.php(779): Illuminate/Database/Connection->runQueryCallback('delete from `ca...', Array, Object(Closure))
+#1 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Connection.php(584): Illuminate/Database/Connection->run('delete from `ca...', Array, Object(Closure))
+#2 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Connection.php(548): Illuminate/Database/Connection->affectingStatement('delete from `ca...', Array)
+#3 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php(4024): Illuminate/Database/Connection->delete('delete from `ca...', Array)
+#4 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Cache/DatabaseStore.php(422): Illuminate/Database/Query/Builder->delete()
+#5 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Cache/Repository.php(792): Illuminate/Cache/DatabaseStore->flush()
+#6 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Cache/Console/ClearCommand.php(69): Illuminate/Cache/Repository->__call('flush', Array)
+#7 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(36): Illuminate/Cache/Console/ClearCommand->handle()
+#8 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Container/Util.php(43): Illuminate/Container/BoundMethod::Illuminate/Container/{closure}()
+#9 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(95): Illuminate/Container/Util::unwrapIfClosure(Object(Closure))
+#10 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(35): Illuminate/Container/BoundMethod::callBoundMethod(Object(Illuminate/Foundation/Application), Array, Object(Closure))
+#11 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Container/Container.php(696): Illuminate/Container/BoundMethod::call(Object(Illuminate/Foundation/Application), Array, Array, NULL)
+#12 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Console/Command.php(213): Illuminate/Container/Container->call(Array)
+#13 D:/Manda/VSCode/Catalog/catalog-backend/vendor/symfony/console/Command/Command.php(341): Illuminate/Console/Command->execute(Object(Symfony/Component/Console/Input/ArgvInput), Object(Illuminate/Console/OutputStyle))
+#14 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Console/Command.php(182): Symfony/Component/Console/Command/Command->run(Object(Symfony/Component/Console/Input/ArgvInput), Object(Illuminate/Console/OutputStyle))
+#15 D:/Manda/VSCode/Catalog/catalog-backend/vendor/symfony/console/Application.php(1117): Illuminate/Console/Command->run(Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#16 D:/Manda/VSCode/Catalog/catalog-backend/vendor/symfony/console/Application.php(356): Symfony/Component/Console/Application->doRunCommand(Object(Illuminate/Cache/Console/ClearCommand), Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#17 D:/Manda/VSCode/Catalog/catalog-backend/vendor/symfony/console/Application.php(195): Symfony/Component/Console/Application->doRun(Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#18 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(198): Symfony/Component/Console/Application->run(Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#19 D:/Manda/VSCode/Catalog/catalog-backend/artisan(12): Illuminate/Foundation/Console/Kernel->handle(Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#20 {main}
+
+[previous exception] [object] (PDOException(code: 42S02): SQLSTATE[42S02]: Base table or view not found: 1146 Table 'e-catalog.cache' doesn't exist at D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Connection.php:592)
+[stacktrace]
+#0 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Connection.php(592): PDO->prepare('delete from `ca...')
+#1 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Connection.php(812): Illuminate/Database/Connection->Illuminate/Database/{closure}('delete from `ca...', Array)
+#2 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Connection.php(779): Illuminate/Database/Connection->runQueryCallback('delete from `ca...', Array, Object(Closure))
+#3 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Connection.php(584): Illuminate/Database/Connection->run('delete from `ca...', Array, Object(Closure))
+#4 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Connection.php(548): Illuminate/Database/Connection->affectingStatement('delete from `ca...', Array)
+#5 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php(4024): Illuminate/Database/Connection->delete('delete from `ca...', Array)
+#6 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Cache/DatabaseStore.php(422): Illuminate/Database/Query/Builder->delete()
+#7 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Cache/Repository.php(792): Illuminate/Cache/DatabaseStore->flush()
+#8 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Cache/Console/ClearCommand.php(69): Illuminate/Cache/Repository->__call('flush', Array)
+#9 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(36): Illuminate/Cache/Console/ClearCommand->handle()
+#10 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Container/Util.php(43): Illuminate/Container/BoundMethod::Illuminate/Container/{closure}()
+#11 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(95): Illuminate/Container/Util::unwrapIfClosure(Object(Closure))
+#12 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(35): Illuminate/Container/BoundMethod::callBoundMethod(Object(Illuminate/Foundation/Application), Array, Object(Closure))
+#13 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Container/Container.php(696): Illuminate/Container/BoundMethod::call(Object(Illuminate/Foundation/Application), Array, Array, NULL)
+#14 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Console/Command.php(213): Illuminate/Container/Container->call(Array)
+#15 D:/Manda/VSCode/Catalog/catalog-backend/vendor/symfony/console/Command/Command.php(341): Illuminate/Console/Command->execute(Object(Symfony/Component/Console/Input/ArgvInput), Object(Illuminate/Console/OutputStyle))
+#16 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Console/Command.php(182): Symfony/Component/Console/Command/Command->run(Object(Symfony/Component/Console/Input/ArgvInput), Object(Illuminate/Console/OutputStyle))
+#17 D:/Manda/VSCode/Catalog/catalog-backend/vendor/symfony/console/Application.php(1117): Illuminate/Console/Command->run(Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#18 D:/Manda/VSCode/Catalog/catalog-backend/vendor/symfony/console/Application.php(356): Symfony/Component/Console/Application->doRunCommand(Object(Illuminate/Cache/Console/ClearCommand), Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#19 D:/Manda/VSCode/Catalog/catalog-backend/vendor/symfony/console/Application.php(195): Symfony/Component/Console/Application->doRun(Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#20 D:/Manda/VSCode/Catalog/catalog-backend/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(198): Symfony/Component/Console/Application->run(Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#21 D:/Manda/VSCode/Catalog/catalog-backend/artisan(12): Illuminate/Foundation/Console/Kernel->handle(Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#22 {main}
+"} 
+[2026-04-10 17:15:53] local.DEBUG: From: Timur Raya Catalog <noreply@timurraya.com>
+To: test2@mail.com
+Subject: [Timur Raya Catalog] Kode Verifikasi 2FA
+MIME-Version: 1.0
+Date: Fri, 10 Apr 2026 17:15:53 +0700
+Message-ID: <ecb6097d658dc4fae5d3478b11049215@timurraya.com>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+Kode verifikasi Anda adalah: 224399
+
+Kode berlaku selama 10 menit.  
