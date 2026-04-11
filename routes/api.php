@@ -8,71 +8,83 @@ use App\Http\Controllers\Admin\ActivityLogController;
 use App\Http\Controllers\Catalog\ProductController;
 use App\Http\Controllers\Catalog\CategoryController;
 use App\Http\Controllers\SearchController;
-use App\Http\Controllers\RoleController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\RoleController;
 
-// ─────────────────────────────────────────────────────────────────
-// PUBLIC — tidak perlu token sama sekali
-// ─────────────────────────────────────────────────────────────────
 Route::get('/roles', [RoleController::class, 'index']);
+Route::post('/login', [AuthController::class, 'login']);
+Route::post('/verify-2fa', [AuthController::class, 'verify2FA']);
 
-Route::prefix('auth')->group(function () {
-    Route::post('/register', [AuthController::class, 'register']);
-    Route::post('/login',    [AuthController::class, 'login']);
+// ─────────────────────────────────────────────
+// PUBLIC ROUTES
+// ─────────────────────────────────────────────
+Route::post('/auth/register', [AuthController::class, 'register']);
+Route::post('/auth/login',    [AuthController::class, 'login']);
+
+Route::middleware('auth:sanctum')->get('/me', function (Request $request) {
+    return $request->user();
 });
 
-// ─────────────────────────────────────────────────────────────────
-// SEMI-AUTH — perlu token (dapat saat register/login), tapi belum
-// perlu 2FA verified. Dipakai untuk kirim/verifikasi kode 2FA.
-// ─────────────────────────────────────────────────────────────────
-Route::middleware('auth:sanctum')->prefix('auth')->group(function () {
-    Route::post('/logout',              [AuthController::class, 'logout']);
-    Route::get('/me',                   [AuthController::class, 'me']);
-    Route::post('/two-factor/send',     [TwoFactorController::class, 'send']);
-    Route::post('/two-factor/verify',   [TwoFactorController::class, 'verify']);
-});
+// ─────────────────────────────────────────────
+// AUTHENTICATED ROUTES (Sanctum)
+// ─────────────────────────────────────────────
+Route::middleware('auth:sanctum')->group(function () {
 
-// ─────────────────────────────────────────────────────────────────
-// AUTHENTICATED + 2FA VERIFIED
-// ─────────────────────────────────────────────────────────────────
-Route::middleware(['auth:sanctum', '2fa.verified'])->group(function () {
+    Route::post('/auth/logout', [AuthController::class, 'logout']);
+    Route::get('/auth/me',      [AuthController::class, 'me']);
 
-    // Dropdown untuk form search (bisa diakses meski belum approved)
-    Route::get('/search/dropdown/brands', [SearchController::class, 'dropdownBrands']);
-    Route::get('/search/dropdown/types',  [SearchController::class, 'dropdownTypes']);
-    Route::get('/categories',             [CategoryController::class, 'index']);
-    Route::get('/categories/{id}',        [CategoryController::class, 'show']);
+    // 2FA — tidak perlu 2FA verified dulu
+    Route::post('/auth/two-factor/send',   [TwoFactorController::class, 'send']);
+    Route::post('/auth/two-factor/verify', [TwoFactorController::class, 'verify']);
 
-    // ─── PERLU APPROVED ──────────────────────────────────────────
-    Route::middleware('approved')->group(function () {
+    // ─────────────────────────────────────────
+    // ROUTES YANG BUTUH 2FA VERIFIED
+    // ─────────────────────────────────────────
+    Route::middleware('2fa.verified')->group(function () {
 
-        // Search & Catalog
-        Route::get('/search/product',     [SearchController::class, 'searchProduct']);
-        Route::get('/search/application', [SearchController::class, 'searchApplication']);
-        Route::get('/products',           [ProductController::class, 'index']);
-        Route::get('/products/{id}',      [ProductController::class, 'show']);
+        // Categories (public read)
+        Route::get('/categories', [CategoryController::class, 'index']);
 
-        // ─── ADMIN (ADM atau SADM) ───────────────────────────────
-        Route::middleware('role:ADM,SADM')->group(function () {
-            Route::get('/admin/approvals',        [ApprovalController::class, 'index']);
-            Route::patch('/admin/approvals/{id}', [ApprovalController::class, 'process']);
+        // Dropdown untuk search
+        Route::get('/search/dropdown/brands',  [SearchController::class, 'dropdownBrands']);
+        Route::get('/search/dropdown/types',   [SearchController::class, 'dropdownTypes']);
+        Route::get('/search/dropdown/years',   [SearchController::class, 'dropdownYears']);
+        Route::get('/search/dropdown/bodies',  [SearchController::class, 'dropdownCarBodies']);
+        Route::get('/search/dropdown/engines', [SearchController::class, 'dropdownEngines']);
 
-            Route::post('/products',              [ProductController::class, 'store']);
-            Route::put('/products/{id}',          [ProductController::class, 'update']);
-            Route::delete('/products/{id}',       [ProductController::class, 'destroy']);
-
-            Route::post('/categories',            [CategoryController::class, 'store']);
-            Route::put('/categories/{id}',        [CategoryController::class, 'update']);
-            Route::delete('/categories/{id}',     [CategoryController::class, 'destroy']);
+        // Search — butuh login + 2FA + approved
+        Route::middleware('approved')->group(function () {
+            Route::get('/search/product',     [SearchController::class, 'searchProduct']);
+            Route::get('/search/application', [SearchController::class, 'searchApplication']);
+            Route::get('/products',           [ProductController::class, 'index']);
+            Route::get('/products/{id}',      [ProductController::class, 'show']);
         });
 
-        // ─── SUPER ADMIN (SADM only) ─────────────────────────────
-        Route::middleware('role:SADM')->group(function () {
-            Route::get('/admin/users',          [UserManagementController::class, 'index']);
-            Route::post('/admin/users',         [UserManagementController::class, 'store']);
-            Route::put('/admin/users/{id}',     [UserManagementController::class, 'update']);
-            Route::delete('/admin/users/{id}',  [UserManagementController::class, 'destroy']);
-            Route::get('/admin/activity-logs',  [ActivityLogController::class, 'index']);
+        // ─────────────────────────────────────
+        // ADMIN ROUTES (ADM atau SADM)
+        // ─────────────────────────────────────
+        Route::middleware(['approved', 'role:ADM,SADM'])->group(function () {
+            Route::get('/admin/approvals',       [ApprovalController::class, 'index']);
+            Route::patch('/admin/approvals/{id}',[ApprovalController::class, 'process']);
+
+            Route::post('/products',             [ProductController::class, 'store']);
+            Route::put('/products/{id}',         [ProductController::class, 'update']);
+            Route::delete('/products/{id}',      [ProductController::class, 'destroy']);
+
+            Route::post('/categories',           [CategoryController::class, 'store']);
+            Route::put('/categories/{id}',       [CategoryController::class, 'update']);
+            Route::delete('/categories/{id}',    [CategoryController::class, 'destroy']);
+        });
+
+        // ─────────────────────────────────────
+        // SUPER ADMIN ROUTES (SADM only)
+        // ─────────────────────────────────────
+        Route::middleware(['approved', 'role:SADM'])->group(function () {
+            Route::get('/admin/users',        [UserManagementController::class, 'index']);
+            Route::post('/admin/users',       [UserManagementController::class, 'store']);
+            Route::put('/admin/users/{id}',   [UserManagementController::class, 'update']);
+            Route::delete('/admin/users/{id}',[UserManagementController::class, 'destroy']);
+            Route::get('/admin/activity-logs',[ActivityLogController::class, 'index']);
         });
     });
 });

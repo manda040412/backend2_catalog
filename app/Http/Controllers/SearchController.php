@@ -10,10 +10,6 @@ class SearchController extends Controller
 {
     public function __construct(protected SearchService $searchService) {}
 
-    /**
-     * GET /api/search/product?mode=item_code&q=SA-1762
-     * GET /api/search/product?mode=oem&q=BBM2-34-380A
-     */
     public function searchProduct(Request $request)
     {
         $request->validate([
@@ -30,13 +26,15 @@ class SearchController extends Controller
             $internal
         );
 
-        ActivityLog::create([
-            'user_id'     => $user->id_user,
-            'action'      => 'search',
-            'module'      => 'search_product',
-            'description' => "mode={$request->mode} q={$request->q} results={$results->count()}",
-            'ip_address'  => $request->ip(),
-        ]);
+        if ($user) {
+            ActivityLog::create([
+                'user_id'     => $user->id_user,
+                'action'      => 'search',
+                'module'      => 'search_product',
+                'description' => "Search [{$request->mode}]: {$request->q}",
+                'ip_address'  => $request->ip(),
+            ]);
+        }
 
         return response()->json([
             'query'   => $request->only(['mode', 'q']),
@@ -45,66 +43,76 @@ class SearchController extends Controller
         ]);
     }
 
-    /**
-     * GET /api/search/application?car_brand=MAZDA&car_type=BIANTE&year_from=2015
-     */
     public function searchApplication(Request $request)
     {
         $request->validate([
-            'car_brand' => 'required|string|max:100',
-            'car_type'  => 'nullable|string|max:100',
-            'year_from' => 'nullable|digits:4|integer',
+            'car_brand'   => 'required|string|max:100',
+            'car_type'    => 'required|string|max:100',
+            'year'        => 'nullable|string|max:30',
+            'category_id' => 'nullable|string|max:20',
+            'car_body'    => 'nullable|string|max:50',
+            'engine_desc' => 'nullable|string|max:200',
         ]);
 
         $user     = $request->user();
         $internal = $user && $user->isInternal();
 
         $results = $this->searchService->searchByApplication(
-            $request->only(['car_brand', 'car_type', 'year_from']),
+            $request->only(['car_brand', 'car_type', 'year', 'category_id', 'car_body', 'engine_desc']),
             $internal
         );
 
-        ActivityLog::create([
-            'user_id'     => $user->id_user,
-            'action'      => 'search',
-            'module'      => 'search_application',
-            'description' => "brand={$request->car_brand} type={$request->car_type} year={$request->year_from} results={$results->count()}",
-            'ip_address'  => $request->ip(),
-        ]);
+        if ($user) {
+            ActivityLog::create([
+                'user_id'     => $user->id_user,
+                'action'      => 'search',
+                'module'      => 'search_application',
+                'description' => "Search application: {$request->car_brand} {$request->car_type} {$request->year}",
+                'ip_address'  => $request->ip(),
+            ]);
+        }
 
         return response()->json([
-            'query'   => $request->only(['car_brand', 'car_type', 'year_from']),
+            'query'   => $request->only(['car_brand', 'car_type', 'year', 'category_id', 'car_body', 'engine_desc']),
             'total'   => $results->count(),
             'results' => $results,
         ]);
     }
 
-    /**
-     * GET /api/search/dropdown/brands
-     */
-    public function dropdownBrands()
+    public function dropdownBrands(Request $request)
     {
-        return response()->json($this->searchService->getCarBrands());
+        return response()->json(
+            $this->searchService->getCarBrands($request->category_id)
+        );
     }
 
-    /**
-     * GET /api/search/dropdown/types?car_brand=TOYOTA
-     */
     public function dropdownTypes(Request $request)
     {
-        $request->validate(['car_brand' => 'nullable|string']);
-        return response()->json($this->searchService->getCarTypes($request->car_brand));
+        return response()->json(
+            $this->searchService->getCarTypes($request->car_brand, $request->category_id)
+        );
     }
 
-    /**
-     * GET /api/search/dropdown/years?car_brand=TOYOTA&car_type=Avanza
-     */
     public function dropdownYears(Request $request)
     {
-        $request->validate([
-            'car_brand' => 'required|string',
-            'car_type'  => 'required|string',
-        ]);
-        return response()->json($this->searchService->getYears($request->car_brand, $request->car_type));
+        return response()->json(
+            $this->searchService->getYears($request->car_brand, $request->car_type, $request->category_id)
+        );
+    }
+
+    // NEW: dropdown car_body (optional)
+    public function dropdownCarBodies(Request $request)
+    {
+        return response()->json(
+            $this->searchService->getCarBodies($request->car_brand, $request->car_type, $request->category_id)
+        );
+    }
+
+    // NEW: dropdown engine (optional)
+    public function dropdownEngines(Request $request)
+    {
+        return response()->json(
+            $this->searchService->getEngines($request->car_brand, $request->car_type, $request->year, $request->category_id)
+        );
     }
 }

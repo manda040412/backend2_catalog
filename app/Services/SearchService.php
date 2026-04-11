@@ -7,10 +7,7 @@ use App\Models\MatchCar;
 
 class SearchService
 {
-    /**
-     * Search by item_code atau oem_number
-     */
-    public function searchByProduct(string $mode, string $keyword, bool $isInternal = false)
+    public function searchByProduct(string $mode, string $keyword, bool $isInternal = false): \Illuminate\Database\Eloquent\Collection
     {
         $query = Product::with(['category', 'crosses', 'matchCars']);
 
@@ -19,8 +16,10 @@ class SearchService
         }
 
         if ($mode === 'item_code') {
-            $query->where('item_code', 'LIKE', "%{$keyword}%")
+            $query->where(function ($q) use ($keyword) {
+                $q->where('item_code', 'LIKE', "%{$keyword}%")
                   ->orWhere('nama_produk', 'LIKE', "%{$keyword}%");
+            });
         } elseif ($mode === 'oem') {
             $query->whereHas('crosses', function ($q) use ($keyword) {
                 $q->where('oem_number', 'LIKE', "%{$keyword}%");
@@ -30,31 +29,32 @@ class SearchService
         return $query->get();
     }
 
-    /**
-     * Search by application (car info)
-     * FIXED: year_to = NULL berarti masih diproduksi (data asli: "ON")
-     *        sehingga harus tetap muncul saat search berdasarkan tahun
-     */
-    public function searchByApplication(array $filters, bool $isInternal = false)
+    public function searchByApplication(array $filters, bool $isInternal = false): \Illuminate\Database\Eloquent\Collection
     {
         $query = Product::with(['category', 'crosses', 'matchCars'])
             ->whereHas('matchCars', function ($q) use ($filters) {
                 if (!empty($filters['car_brand'])) {
-                    $q->where('car_brand', $filters['car_brand']);
+                    $q->where('car_maker', $filters['car_brand']);
                 }
                 if (!empty($filters['car_type'])) {
-                    $q->where('car_type', $filters['car_type']);
+                    $q->where('car_model', $filters['car_type']);
                 }
-                if (!empty($filters['year_from'])) {
-                    $year = (int) $filters['year_from'];
-                    $q->where('year_from', '<=', $year)
-                      ->where(function ($q2) use ($year) {
-                          // year_to NULL = masih diproduksi (ON) → selalu cocok
-                          $q2->whereNull('year_to')
-                             ->orWhere('year_to', '>=', $year);
-                      });
+                // FIX: year di DB adalah string "2008 - 2018", cukup match exact string
+                if (!empty($filters['year'])) {
+                    $q->where('year', $filters['year']);
+                }
+                // Optional filters
+                if (!empty($filters['car_body'])) {
+                    $q->where('car_body', $filters['car_body']);
+                }
+                if (!empty($filters['engine_desc'])) {
+                    $q->where('engine_desc', $filters['engine_desc']);
                 }
             });
+
+        if (!empty($filters['category_id'])) {
+            $query->where('category_id', $filters['category_id']);
+        }
 
         if (!$isInternal) {
             $query->where('is_internal_only', 0);
@@ -63,42 +63,59 @@ class SearchService
         return $query->get();
     }
 
-    /**
-     * Dropdown: daftar car_brand unik
-     */
-    public function getCarBrands(): array
+    public function getCarBrands(?string $categoryId = null): array
     {
-        return MatchCar::distinct()
-            ->orderBy('car_brand')
-            ->pluck('car_brand')
-            ->toArray();
-    }
-
-    /**
-     * Dropdown: daftar car_type berdasarkan car_brand
-     */
-    public function getCarTypes(string $carBrand = null): array
-    {
-        $query = MatchCar::distinct()->orderBy('car_type');
-        if ($carBrand) {
-            $query->where('car_brand', $carBrand);
+        $query = MatchCar::distinct()->orderBy('car_maker');
+        if ($categoryId) {
+            $query->whereHas('product', fn($q) => $q->where('category_id', $categoryId));
         }
-        return $query->pluck('car_type')->toArray();
+        return $query->pluck('car_maker')->toArray();
     }
 
-    /**
-     * Dropdown: daftar tahun berdasarkan car_brand + car_type
-     * Menghasilkan range dari year_from terkecil sampai tahun ini (untuk yg masih ON)
-     */
-    public function getYears(string $carBrand, string $carType): array
+    public function getCarTypes(string $carMaker = null, ?string $categoryId = null): array
     {
-        $rows = MatchCar::where('car_brand', $carBrand)
-            ->where('car_type', $carType)
-            ->selectRaw('MIN(year_from) as min_year, MAX(COALESCE(year_to, YEAR(NOW()))) as max_year')
-            ->first();
+        $query = MatchCar::distinct()->orderBy('car_model');
+        if ($carMaker) $query->where('car_maker', $carMaker);
+        if ($categoryId) {
+            $query->whereHas('product', fn($q) => $q->where('category_id', $categoryId));
+        }
+        return $query->pluck('car_model')->toArray();
+    }
 
-        if (!$rows || !$rows->min_year) return [];
+    // FIX: Kembalikan range string "2008 - 2018" langsung — tidak di-expand per tahun
+    public function getYears(string $carMaker = null, string $carModel = null, ?string $categoryId = null): array
+    {
+        $query = MatchCar::distinct()->orderBy('year');
+        if ($carMaker) $query->where('car_maker', $carMaker);
+        if ($carModel) $query->where('car_model', $carModel);
+        if ($categoryId) {
+            $query->whereHas('product', fn($q) => $q->where('category_id', $categoryId));
+        }
+        return $query->whereNotNull('year')->pluck('year')->unique()->sort()->values()->toArray();
+    }
 
-        return array_reverse(range((int) $rows->min_year, (int) $rows->max_year));
+    // NEW: Dropdown car_body (optional filter)
+    public function getCarBodies(string $carMaker = null, string $carModel = null, ?string $categoryId = null): array
+    {
+        $query = MatchCar::distinct()->orderBy('car_body');
+        if ($carMaker) $query->where('car_maker', $carMaker);
+        if ($carModel) $query->where('car_model', $carModel);
+        if ($categoryId) {
+            $query->whereHas('product', fn($q) => $q->where('category_id', $categoryId));
+        }
+        return $query->whereNotNull('car_body')->pluck('car_body')->unique()->sort()->values()->toArray();
+    }
+
+    // NEW: Dropdown engine_desc (optional filter)
+    public function getEngines(string $carMaker = null, string $carModel = null, ?string $year = null, ?string $categoryId = null): array
+    {
+        $query = MatchCar::distinct()->orderBy('engine_desc');
+        if ($carMaker) $query->where('car_maker', $carMaker);
+        if ($carModel) $query->where('car_model', $carModel);
+        if ($year) $query->where('year', $year);
+        if ($categoryId) {
+            $query->whereHas('product', fn($q) => $q->where('category_id', $categoryId));
+        }
+        return $query->whereNotNull('engine_desc')->pluck('engine_desc')->unique()->sort()->values()->toArray();
     }
 }
