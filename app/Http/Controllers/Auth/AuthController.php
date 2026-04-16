@@ -45,23 +45,32 @@ class AuthController extends Controller
             'status'  => 'pending',
         ]);
 
-        // Kirim kode 2FA ke email
-        $this->twoFactorService->generateAndSend($user);
-
         // Token diperlukan agar endpoint /auth/two-factor/* bisa diakses
         $token = $user->createToken('auth_token')->plainTextToken;
 
+        // Kirim kode 2FA ke email — jika gagal, tetap return sukses registrasi
+        // agar user bisa resend manual dari halaman 2FA
+        $mailSent = true;
+        try {
+            $this->twoFactorService->generateAndSend($user);
+        } catch (\Exception $e) {
+            $mailSent = false;
+            \Log::error('2FA mail failed: ' . $e->getMessage());
+        }
+
         return response()->json([
-            'message' => 'Registrasi berhasil. Cek email untuk kode verifikasi 2FA.',
-            'token'   => $token,
-            'user'    => $user->load('role'),
+            'message'   => $mailSent
+                ? 'Registrasi berhasil. Cek email untuk kode verifikasi 2FA.'
+                : 'Registrasi berhasil. Kode 2FA gagal dikirim — gunakan tombol Resend di halaman verifikasi.',
+            'token'     => $token,
+            'user'      => $user->load('role'),
+            'mail_sent' => $mailSent,
         ], 201);
     }
 
     /**
      * POST /api/auth/login
-     * Mengembalikan token agar frontend bisa akses endpoint 2FA.
-     * Token belum bisa dipakai untuk endpoint lain sebelum 2FA verified.
+     * Login langsung tanpa 2FA — hanya register yang pakai 2FA
      */
     public function login(Request $request)
     {
@@ -78,20 +87,16 @@ class AuthController extends Controller
             ]);
         }
 
-        // Reset 2FA setiap login baru (paksa verifikasi ulang)
-        $user->update(['two_fa_verified_at' => null]);
-        $user->tokens()->delete(); // hapus token lama
+        // Hapus token lama
+        $user->tokens()->delete();
 
-        // Kirim kode 2FA baru
-        $this->twoFactorService->generateAndSend($user);
-
-        // Buat token sementara untuk akses endpoint 2FA
+        // Buat token langsung (tidak perlu 2FA)
         $token = $user->createToken('auth_token')->plainTextToken;
 
         return response()->json([
-            'message'      => 'Kode verifikasi 2FA telah dikirim ke email Anda.',
-            'token'        => $token,
-            'requires_2fa' => true,
+            'message' => 'Login berhasil.',
+            'token'   => $token,
+            'user'    => $user->load('role'),
         ]);
     }
 

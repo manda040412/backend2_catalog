@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Mail\TwoFactorMail;
 use App\Models\User;
 use Illuminate\Support\Facades\Mail;
 use Carbon\Carbon;
@@ -18,14 +19,8 @@ class TwoFactorService
             'two_fa_verified_at' => null,
         ]);
 
-        // Send email — ganti dengan Mail::to($user)->send(new TwoFactorMail($code)) jika mau pakai Mailable
-        Mail::raw(
-            "Kode verifikasi Anda adalah: {$code}\n\nKode berlaku selama 10 menit.",
-            function ($message) use ($user) {
-                $message->to($user->email)
-                        ->subject('[Timur Raya Catalog] Kode Verifikasi 2FA');
-            }
-        );
+        // Kirim email HTML yang bagus
+        Mail::to($user->email)->send(new TwoFactorMail($code, $user->name));
 
         return $code;
     }

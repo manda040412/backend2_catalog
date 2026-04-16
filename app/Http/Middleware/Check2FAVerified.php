@@ -17,6 +17,11 @@ class Check2FAVerified
             ], 401);
         }
 
+        // User internal (SADM/ADM/INT) login langsung tanpa 2FA → bypass check
+        if ($user->isInternal()) {
+            return $next($request);
+        }
+
         if (!$user->two_fa_verified_at) {
             return response()->json([
                 'message' => '2FA belum diverifikasi'

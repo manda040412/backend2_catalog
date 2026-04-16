@@ -3,9 +3,12 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Mail\ApprovalNotificationMail;
 use App\Models\Approval;
-use Illuminate\Http\Request;
 use Carbon\Carbon;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
 
 class ApprovalController extends Controller
 {
@@ -37,10 +40,6 @@ class ApprovalController extends Controller
 
         $approval = Approval::with('user')->findOrFail($id);
 
-        if ($approval->status !== 'pending') {
-            return response()->json(['message' => 'Approval ini sudah diproses sebelumnya.'], 409);
-        }
-
         $approval->update([
             'status'      => $request->status,
             'approved_by' => $request->user()->id_user,
@@ -50,6 +49,23 @@ class ApprovalController extends Controller
 
         if ($request->status === 'approved') {
             $approval->user->update(['is_approved' => 1]);
+        }
+
+        // Kirim email notifikasi ke user
+        try {
+            Mail::to($approval->user->email)->send(
+                new ApprovalNotificationMail(
+                    userName: $approval->user->name,
+                    status:   $request->status,
+                    notes:    $request->notes,
+                )
+            );
+        } catch (\Exception $e) {
+            // Jangan gagalkan request jika email error — cukup log saja
+            Log::error('Approval notification email failed: ' . $e->getMessage(), [
+                'user_id'     => $approval->user->id_user,
+                'approval_id' => $id,
+            ]);
         }
 
         return response()->json([
