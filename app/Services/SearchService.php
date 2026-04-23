@@ -7,9 +7,19 @@ use App\Models\MatchCar;
 
 class SearchService
 {
+    /**
+     * Search produk by item_code atau OEM number.
+     * Internal (SADM/ADM/INT) → tampilkan crosses + matchCars
+     * External (EXT)          → hanya matchCars, crosses TIDAK dikembalikan
+     */
     public function searchByProduct(string $mode, string $keyword, bool $isInternal = false): \Illuminate\Database\Eloquent\Collection
     {
-        $query = Product::with(['category', 'crosses', 'matchCars']);
+        // Eager load berdasarkan role
+        $with = $isInternal
+            ? ['category', 'crosses', 'matchCars']
+            : ['category', 'matchCars'];
+
+        $query = Product::with($with);
 
         if (!$isInternal) {
             $query->where('is_internal_only', 0);
@@ -21,6 +31,8 @@ class SearchService
                   ->orWhere('nama_produk', 'LIKE', "%{$keyword}%");
             });
         } elseif ($mode === 'oem') {
+            // Search by OEM hanya relevan untuk internal (yang bisa lihat cross)
+            // Tapi tetap allow external search by OEM — hanya hasil cross-nya tidak ditampilkan
             $query->whereHas('crosses', function ($q) use ($keyword) {
                 $q->where('oem_number', 'LIKE', "%{$keyword}%");
             });
@@ -29,9 +41,18 @@ class SearchService
         return $query->get();
     }
 
+    /**
+     * Search produk by aplikasi kendaraan.
+     * Internal → tampilkan crosses + matchCars
+     * External → hanya matchCars
+     */
     public function searchByApplication(array $filters, bool $isInternal = false): \Illuminate\Database\Eloquent\Collection
     {
-        $query = Product::with(['category', 'crosses', 'matchCars'])
+        $with = $isInternal
+            ? ['category', 'crosses', 'matchCars']
+            : ['category', 'matchCars'];
+
+        $query = Product::with($with)
             ->whereHas('matchCars', function ($q) use ($filters) {
                 if (!empty($filters['car_brand'])) {
                     $q->where('car_maker', $filters['car_brand']);
@@ -39,11 +60,9 @@ class SearchService
                 if (!empty($filters['car_type'])) {
                     $q->where('car_model', $filters['car_type']);
                 }
-                // FIX: year di DB adalah string "2008 - 2018", cukup match exact string
                 if (!empty($filters['year'])) {
                     $q->where('year', $filters['year']);
                 }
-                // Optional filters
                 if (!empty($filters['car_body'])) {
                     $q->where('car_body', $filters['car_body']);
                 }
@@ -62,6 +81,8 @@ class SearchService
 
         return $query->get();
     }
+
+    // ── Dropdown helpers ──────────────────────────────────────────
 
     public function getCarBrands(?string $categoryId = null): array
     {
@@ -82,7 +103,6 @@ class SearchService
         return $query->pluck('car_model')->toArray();
     }
 
-    // FIX: Kembalikan range string "2008 - 2018" langsung — tidak di-expand per tahun
     public function getYears(string $carMaker = null, string $carModel = null, ?string $categoryId = null): array
     {
         $query = MatchCar::distinct()->orderBy('year');
@@ -94,7 +114,6 @@ class SearchService
         return $query->whereNotNull('year')->pluck('year')->unique()->sort()->values()->toArray();
     }
 
-    // NEW: Dropdown car_body (optional filter)
     public function getCarBodies(string $carMaker = null, string $carModel = null, ?string $categoryId = null): array
     {
         $query = MatchCar::distinct()->orderBy('car_body');
@@ -106,7 +125,6 @@ class SearchService
         return $query->whereNotNull('car_body')->pluck('car_body')->unique()->sort()->values()->toArray();
     }
 
-    // NEW: Dropdown engine_desc (optional filter)
     public function getEngines(string $carMaker = null, string $carModel = null, ?string $year = null, ?string $categoryId = null): array
     {
         $query = MatchCar::distinct()->orderBy('engine_desc');

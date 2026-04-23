@@ -234,7 +234,7 @@
       <!-- Warning -->
       <div class="warning">
         <strong>⚠️ Jangan bagikan kode ini kepada siapapun.</strong><br/>
-        Tim TRA tidak akan pernah meminta kode verifikasi Anda melalui telepon, WhatsApp, atau saluran lain. 
+        Tim TRAD tidak akan pernah meminta kode verifikasi Anda melalui telepon, WhatsApp, atau saluran lain. 
         Jika Anda tidak merasa mendaftar, abaikan email ini.
       </div>
 
@@ -242,7 +242,7 @@
 
       <p class="help-text">
         Butuh bantuan? Hubungi kami di 
-        <a href="mailto:tranugerahsales1@gmail.com">manda@tranugerah.com</a>
+        <a href="mailto:manda@tranugerah.com">manda@tranugerah.com</a>
         atau kunjungi website kami.
       </p>
     </div>

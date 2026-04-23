@@ -16,10 +16,13 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         $data = $request->validate([
-            'id_category'   => 'required|string|max:10|unique:categories,id_category',
             'category_name' => 'required|string|max:255',
             'description'   => 'nullable|string|max:255',
         ]);
+
+        // Auto-generate ID
+        $data['id_category'] = Category::generateId();
+
         $cat = Category::create($data);
         return response()->json(['message' => 'Kategori dibuat.', 'category' => $cat], 201);
     }

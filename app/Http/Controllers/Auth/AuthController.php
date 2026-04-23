@@ -17,6 +17,12 @@ class AuthController extends Controller
 
     /**
      * POST /api/auth/register
+     *
+     * Semua user baru (INT/EXT):
+     *  - is_approved = 0, perlu approval admin
+     *  - Wajib 2FA verifikasi email setelah register
+     *
+     * SADM/ADM tidak bisa self-register — dibuat manual oleh SADM.
      */
     public function register(Request $request)
     {
@@ -28,7 +34,10 @@ class AuthController extends Controller
             'phone'                 => 'nullable|string|max:20',
         ]);
 
-        $extRole = Role::where('id_role_code', 'EXT')->firstOrFail();
+        $emailDomain = strtolower(substr(strrchr($data['email'], '@'), 1));
+        $roleCode    = ($emailDomain === 'tranugerah.com') ? 'INT' : 'EXT';
+
+        $role = Role::where('id_role_code', $roleCode)->firstOrFail();
 
         $user = User::create([
             'name'        => $data['name'],
@@ -36,7 +45,7 @@ class AuthController extends Controller
             'password'    => Hash::make($data['password']),
             'company'     => $data['company'] ?? null,
             'phone'       => $data['phone'] ?? null,
-            'role_id'     => $extRole->id_role,
+            'role_id'     => $role->id_role,
             'is_approved' => 0,
         ]);
 
@@ -45,32 +54,36 @@ class AuthController extends Controller
             'status'  => 'pending',
         ]);
 
-        // Token diperlukan agar endpoint /auth/two-factor/* bisa diakses
+        // Token untuk akses endpoint 2FA
         $token = $user->createToken('auth_token')->plainTextToken;
 
-        // Kirim kode 2FA ke email — jika gagal, tetap return sukses registrasi
-        // agar user bisa resend manual dari halaman 2FA
         $mailSent = true;
         try {
             $this->twoFactorService->generateAndSend($user);
         } catch (\Exception $e) {
             $mailSent = false;
-            \Log::error('2FA mail failed: ' . $e->getMessage());
+            \Log::error('2FA mail failed on register: ' . $e->getMessage());
         }
 
         return response()->json([
-            'message'   => $mailSent
-                ? 'Registrasi berhasil. Cek email untuk kode verifikasi 2FA.'
-                : 'Registrasi berhasil. Kode 2FA gagal dikirim — gunakan tombol Resend di halaman verifikasi.',
-            'token'     => $token,
-            'user'      => $user->load('role'),
-            'mail_sent' => $mailSent,
+            'message'      => $mailSent
+                ? 'Registrasi berhasil. Cek email untuk kode 2FA. Akun aktif setelah disetujui admin.'
+                : 'Registrasi berhasil. Kode 2FA gagal dikirim — gunakan tombol Resend.',
+            'token'        => $token,
+            'user'         => $user->load('role'),
+            'requires_2fa' => true,
+            'mail_sent'    => $mailSent,
         ], 201);
     }
 
     /**
      * POST /api/auth/login
-     * Login langsung tanpa 2FA — hanya register yang pakai 2FA
+     *
+     * Aturan login:
+     *  - SADM / ADM → langsung masuk, tidak perlu 2FA, tidak perlu approval
+     *  - INT  / EXT → cek approved → langsung masuk (tidak ada 2FA saat login)
+     *
+     * 2FA HANYA di proses register, bukan login.
      */
     public function login(Request $request)
     {
@@ -79,7 +92,7 @@ class AuthController extends Controller
             'password' => 'required|string',
         ]);
 
-        $user = User::where('email', $data['email'])->first();
+        $user = User::where('email', $data['email'])->with('role')->first();
 
         if (!$user || !Hash::check($data['password'], $user->password)) {
             throw ValidationException::withMessages([
@@ -87,16 +100,44 @@ class AuthController extends Controller
             ]);
         }
 
-        // Hapus token lama
-        $user->tokens()->delete();
+        $roleCode = $user->role?->id_role_code;
+        $isAdmin  = in_array($roleCode, ['SADM', 'ADM']);
 
-        // Buat token langsung (tidak perlu 2FA)
+        // ── SADM / ADM: langsung masuk ──────────────────────────
+        if ($isAdmin) {
+            // Auto-fix jika admin belum approved
+            if (!$user->is_approved) {
+                $user->update(['is_approved' => 1]);
+                $user->is_approved = 1;
+            }
+
+            $user->tokens()->delete();
+            $token = $user->createToken('auth_token')->plainTextToken;
+
+            return response()->json([
+                'message'      => 'Login berhasil.',
+                'token'        => $token,
+                'user'         => $user->load('role'),
+                'requires_2fa' => false,
+            ]);
+        }
+
+        // ── INT / EXT: cek approved, lalu langsung masuk ────────
+        if (!$user->is_approved) {
+            return response()->json([
+                'message' => 'Akun Anda belum disetujui oleh admin. Silakan tunggu konfirmasi.',
+                'reason'  => 'not_approved',
+            ], 403);
+        }
+
+        $user->tokens()->delete();
         $token = $user->createToken('auth_token')->plainTextToken;
 
         return response()->json([
-            'message' => 'Login berhasil.',
-            'token'   => $token,
-            'user'    => $user->load('role'),
+            'message'      => 'Login berhasil.',
+            'token'        => $token,
+            'user'         => $user->load('role'),
+            'requires_2fa' => false,
         ]);
     }
 

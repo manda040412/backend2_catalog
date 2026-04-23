@@ -19,7 +19,7 @@ return [
     ],
     'from' => [
         'address' => env('MAIL_FROM_ADDRESS', 'noreply@timurraya.com'),
-        'name'    => env('MAIL_FROM_NAME', 'Timur Raya Catalog'),
+        'name'    => env('MAIL_FROM_NAME', 'Timur Raya Anugerah Damai Catalog'),
     ],
     'markdown' => [
         'theme' => 'default',

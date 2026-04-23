@@ -14,7 +14,12 @@ class ProductController extends Controller
         $user     = $request->user();
         $internal = $user && $user->isInternal();
 
-        $query = Product::with(['category', 'crosses', 'matchCars']);
+        $query = Product::with(['category', 'matchCars']);
+
+        // Only internal users can see cross reference data
+        if ($internal) {
+            $query->with('crosses');
+        }
 
         if (!$internal) {
             $query->where('is_internal_only', 0);
@@ -41,11 +46,12 @@ class ProductController extends Controller
     {
         $user     = $request->user();
         $internal = $user && $user->isInternal();
+        $perPage  = min((int)($request->per_page ?? 20), 9999);
 
         $products = Product::with('category')
             ->when(!$internal, fn($q) => $q->where('is_internal_only', 0))
             ->when($request->category_id, fn($q) => $q->where('category_id', $request->category_id))
-            ->paginate(20);
+            ->paginate($perPage);
 
         return response()->json($products);
     }
@@ -53,14 +59,17 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         $data = $request->validate([
-            'id_produk'        => 'required|string|max:15|unique:products,id_produk',
             'category_id'      => 'required|exists:categories,id_category',
             'item_code'        => 'required|string|max:255',
             'brand_produk'     => 'required|string|max:255',
             'nama_produk'      => 'required|string|max:255',
             'print_description'=> 'nullable|string|max:255',
+            'description'      => 'nullable|string',
             'is_internal_only' => 'boolean',
         ]);
+
+        // Auto-generate ID
+        $data['id_produk'] = Product::generateId();
 
         $product = Product::create($data);
         return response()->json(['message' => 'Produk berhasil ditambahkan.', 'product' => $product], 201);
@@ -75,6 +84,7 @@ class ProductController extends Controller
             'brand_produk'     => 'sometimes|string|max:255',
             'nama_produk'      => 'sometimes|string|max:255',
             'print_description'=> 'nullable|string|max:255',
+            'description'      => 'nullable|string',
             'is_internal_only' => 'boolean',
         ]);
 
